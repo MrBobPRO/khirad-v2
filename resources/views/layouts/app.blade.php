@@ -1,36 +1,70 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="tj">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>@hasSection('title')@yield('title'){{ ' – Хирад' }}@else{{'Хирад'}}@endif</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <meta name="keywords" content="китоб, книги, бесплатные книги, онлайн библиотека, купить книги в Таджикистане, читать книги онлайн"/>
+        <meta property="og:site_name" content="Хирад">
+        <meta property="og:type" content="object" />
+        <meta name="twitter:card" content="summary_large_image">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        @hasSection ('meta-tags')
+            @yield('meta-tags')
+        @else
+            <meta name="description" content="“Хирад” – маъбади аҳли илм ва меҳроби поки донишҷӯӣ ва илмомӯзӣ аст. Ҳарки аз китоб ва мутолиа бегона аст, ғариб ва бемӯнис аст.">
+            <meta property="og:title" content="Хирад" />
+            <meta property="og:description" content="“Хирад” – маъбади аҳли илм ва меҳроби поки донишҷӯӣ ва илмомӯзӣ аст. Ҳарки аз китоб ва мутолиа бегона аст, ғариб ва бемӯнис аст.">
+            <meta property="og:image" content="{{ asset('img/main/logo-share.png') }}">
+            <meta property="og:image:alt" content="Хирад – Лого">
+        @endif
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        {{-- Favicons for all devices --}}
+        <link rel="icon" href="{{ asset('img/main/cropped-favi-32x32.ico') }}" sizes="32x32">
+        <link rel="icon" href="{{ asset('img/main/cropped-favi-192x192.ico') }}" sizes="192x192">
+        <link rel="apple-touch-icon-precomposed" href="{{ asset('img/main/cropped-favi-180x180.ico') }}">
+        <meta name="msapplication-TileImage" content="{{ asset('img/main/cropped-favi-256x256.ico') }}">
+
+        {{-- Google Roboto & Cuprum Fonts --}}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cuprum:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+        {{-- Material Icons --}}
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+
+        {{-- Owl Carousel --}}
+        <link rel="stylesheet" href="{{ asset('js/plugins/owl-carousel/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('js/plugins/owl-carousel/owl.theme.default.min.css') }}">
+
+        {{-- Selectize --}}
+        <link href="{{ asset('js/plugins/selectize/dist/css/selectize.css') }}" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ asset('css/full/main.css') }}">
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    
+    <body>
+        @include('layouts.header')
+        <main class="main" role="main">
+            @yield('main')
+        </main>
+        @include('layouts.footer')
+        
+        {{-- JQuery --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+        {{-- Owl Carousel --}}
+        <script src="{{ asset('js/plugins/owl-carousel/owl.carousel.min.js') }}"></script>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+        {{-- Yandex share buttons --}}
+        <script src="https://yastatic.net/share2/share.js"></script>
+
+        {{-- Selectize --}}
+        <script src="{{ asset('js/plugins/selectize/dist/js/standalone/selectize.min.js') }}"></script>
+
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
