@@ -50,6 +50,7 @@
         @include('layouts.header')
         <main class="main" role="main">
             @yield('main')
+            <x-scroll-top-button />
         </main>
         @include('layouts.footer')
         
