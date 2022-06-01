@@ -4,7 +4,7 @@
             <div class="footer__main-inner main-container">
                 <div class="footer__about">
                     <a href="{{ route('home') }}" class="logo footer__logo">
-                        <img src="{{ asset('img/main/logo.png') }}" alt="Хирад лого">
+                        <img class="logo__image" src="{{ asset('img/main/logo.png') }}" alt="Хирад лого">
                     </a>
 
                     <p class="footer__about-text">
@@ -39,11 +39,61 @@
                 </div>
 
                 <div class="footer__additional-links">
-                    
+                    <h3 class="footer__main-title">Илова бар ин</h3>
+                    <ul class="footer__list">
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">Ҳамаи китобҳо</a>
+                        </li>
+
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">Серхондатарин китобҳои ҷаҳон</a>
+                        </li>
+
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">Серхондатарин китобҳои сомона</a>
+                        </li>
+
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">Китобҳои хориҷӣ</a>
+                        </li>
+
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">Муаллифони машҳур</a>
+                        </li>
+
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">Савол - ҷавоб</a>
+                        </li>
+                    </ul>
                 </div>
 
                 <div class="footer__contacts">
+                    <h3 class="footer__main-title">Тамос</h3>
+                    <ul class="footer__list">
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">
+                                <span class="material-icons">navigation </span> Индекс 734064
+                            </a>
+                        </li>
 
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">
+                                <span class="material-icons">place</span> Ҷумҳурии Тоҷикистон <br> ш. Душанбе, кӯчаи Шамси 4Б
+                            </a>
+                        </li>
+
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">
+                                <span class="material-icons">phone</span> +992 927685858
+                            </a>
+                        </li>
+
+                        <li class="footer__list-item">
+                            <a href="#" class="footer__list-link">
+                                <span class="material-icons">email</span> info@khirad.tj
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

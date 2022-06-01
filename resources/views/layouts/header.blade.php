@@ -1,7 +1,7 @@
 <header class="header">
     <div class="header__inner main-container">
         <a href="{{ route('home') }}" class="logo header__logo">
-            <img src="{{ asset('img/main/logo.png') }}" alt="Хирад лого">
+            <img class="logo__image" src="{{ asset('img/main/logo.png') }}" alt="Хирад лого">
         </a>
 
         <nav class="header-nav">
@@ -10,9 +10,20 @@
                     <a href="#" class="header-nav__link">Асосӣ</a>
                 </li>
 
-                <li class="header-nav__li">
-                    <a href="#" class="header-nav__link">Дастабандӣ</a>
+                <li class="header-nav__li categories-dropdown">
+                    <a href="#" class="header-nav__link categories-dropdown__button">Дастабандӣ <span class="material-icons">arrow_drop_down</span></a>
+
+                    <div class="categories-dropdown__content">
+                        <ul class="categories-dropdown__list">
+                            @foreach ($categories as $category)
+                                <li>
+                                    <a href="#">{{ $category->title }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </li>
+
 
                 <li class="header-nav__li">
                     <a href="#" class="header-nav__link">Ҳамаи китобҳо</a>
