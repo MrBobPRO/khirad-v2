@@ -42,6 +42,7 @@
 
         {{-- JQformstyler --}}
         <link href="{{ asset('js/plugins/jqformstyler/jquery.formstyler.css') }}" rel="stylesheet">
+        <link href="{{ asset('js/plugins/jqformstyler/jquery.formstyler.theme.css') }}" rel="stylesheet">
 
         {{-- Selectize --}}
         <link href="{{ asset('js/plugins/selectize/dist/css/selectize.css') }}" rel="stylesheet">

@@ -44,6 +44,9 @@ button {
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
 }
+input {
+    font-family: 'Roboto', sans-serif;
+}
 figure {
     margin: 0;
 }
@@ -97,7 +100,7 @@ figure {
     width: 100%;
 }
 .main__inner {
-    padding: 40px 0;
+    padding-top: 40px;
     width: 100%;
 }
 .main-container {
@@ -333,6 +336,7 @@ figure {
     gap: 12px;
     line-height: 1.8;
     align-items: flex-start;
+    width: max-content;
 }
 .footer__list-link span {
     font-size: 20px;
@@ -347,26 +351,48 @@ figure {
 }
 /* ------------ /end Footer ------------ */
 
-/* ------------ Aside ------------ */
-/* Aside text */
-.aside {
-    min-width: 360px;
-    width: 360px;
+
+/* ------------ Books List ------------ */
+.books-list {
     display: flex;
-    flex-direction: column;
-    gap: 32px;
+    flex-wrap: wrap;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-.aside-text {
-    padding: 32px 32px 20px;
+.books-list__item {
+    width: calc(20% - 32px);
 }
-.aside-text__title {
-    margin-bottom: 28px;
+.books-card__figure {
+    padding: 2px;
 }
-.aside-text__body {
+.books-card__image {
+    border-radius: 6px;
+    box-shadow: 0px 0px 8px 0px rgb(34 60 80 / 20%);
+}
+.books-card__text-content {
+    margin-top: 12px;
+}
+.books-card__title {
     font-size: 16px;
-    color: #1D1D1D;
     font-weight: 500;
+    transition: 0.3s;
 }
+.books-card__author {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+/* horizontal card */
+.books-card--horizontal {
+    display: flex;
+    gap: 16px;
+}
+.books-card--horizontal .books-card__link {
+    width: 35%;
+}
+/* ------------ /end Books List ------------ */
 
 
 /* ------------ Selectize ------------ */
@@ -513,7 +539,6 @@ figure {
 
 
 /* ------------ Home page ------------ */
-/* Books section */
 .home-books {
     background: var(--secondary-background-color);
 }
@@ -522,13 +547,158 @@ figure {
     padding-bottom: 70px;
     flex-direction: column;
 }
+
+/* Extensive Search */
 .extensive-search-title {
     text-align: center;
     margin-bottom: 24px;
 }
 .extensive-search {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.extensive-search__input {
+    min-width: 220px;
+    padding: 10px 20px;
+    font-size: 16px;
+    box-shadow: 0px 3px 10px 0px rgb(0 0 0 / 10%);
+    font-weight: 300;
+    border: 1px solid #d0d0d0b3;
+    border-right: 0;
+    border-radius: 0;
+}
+.extensive-search__input:focus {
+    outline: none;
+}
+.extensive-search__button {
+    padding: 14px 36px;
+    font-size: 16px;
+}
+
+.home-books__main {
+    margin-top: 44px;
+    display: flex;
+    gap: 68px;
+}
+
+/* Recommended Books */
+.recommended-books {
+    min-width: 18%;
+}
+.recommended-books__title {
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 16px;
+    margin-bottom: 40px;
+}
+.recommended-books__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    list-style: none;
+}
+
+/* Latest Books */
+.latest-books {
+    flex-grow: 1;
+}
+.latest-books__title {
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 16px;
+    margin-bottom: 40px;
+}
+
+/* Home Top Books */
+.home-top-books {
+    background-color: var(--main-color);
+}
+.home-top-books__inner {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    color: white;
+    gap: 40px;
+}
+.home-top-books__title {
+    text-align: center;
+    padding: 0 40px;
+    min-width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.home-top-books__title-h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.home-top-books__title-p {
+    font-weight: 100;
+    color: #ffffffbf;
+}
+.home-top-books__list {
+    display: flex;
+    gap: 40px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.home-top-books__list .books-card__author {
+    color: #ffffffbf;
 }
 /* ------------ /end Home page ------------ */
 
 
+/* ------------ JQuery Form Styler ------------ */
+.jq-selectbox__select {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: white;
+    box-shadow: 0px 3px 10px 0px rgb(0 0 0 / 10%);
+    padding: 0px 45px 0px 20px;
+    border: 1px solid #d0d0d0b3;
+    min-width: 210px;
+}
+.extensive-search__year .jq-selectbox__select {
+    min-width: auto;
+}
+.jq-selectbox__select-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    min-width: 100px;
+    font-weight: 300;
+}
+.jq-selectbox__trigger {
+    border-left: 0;
+}
+.jq-selectbox__trigger-arrow {
+    top: 20px;
+}
+.jq-selectbox.focused .jq-selectbox__select {
+    border-color: #d2d2d2;
+ }
+ .jq-selectbox__select:hover {
+   background: white;
+}
+ .jq-selectbox li.selected {
+   background-color: var(--main-color);
+   color: #FFF;
+ }
+ .jq-selectbox li:hover {
+   background-color: var(--main-color);
+   color: #FFF;
+ }
+ .jq-selectbox li {
+   padding: 8px 20px 9px;
+   color: black;
+   font-family: 'Roboto', sans-serif;
+   font-size: 15px;
+   font-weight: 300;
+ }
+ .jq-selectbox__dropdown {
+    box-shadow: none;
+ }
+/* ------------ /end JQuery Form Styler ------------ */

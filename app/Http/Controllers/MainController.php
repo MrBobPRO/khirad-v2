@@ -10,7 +10,10 @@ class MainController extends Controller
     public function home()
     {
         $mostReadableBooks = Book::where('most_readable', true)->inRandomOrder()->get();
+        $recommendedBooks = Book::where('most_readable', false)->inRandomOrder()->take(7)->get();
+        $topBooks = Book::orderBy('views', 'desc')->take(5)->get();
+        $latestBooks = Book::latest()->take(15)->get();
 
-        return view('home.index', compact('mostReadableBooks'));
+        return view('home.index', compact('mostReadableBooks', 'latestBooks', 'recommendedBooks', 'topBooks'));
     }
 }

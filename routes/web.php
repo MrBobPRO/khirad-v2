@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(MainController::class)->group(function () {
     Route::get('/', 'home')->name('home');
+
+    Route::post('/search', 'search')->name('search');
 });
 
 require __DIR__.'/auth.php';

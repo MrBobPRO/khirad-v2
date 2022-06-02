@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('layouts.header', function ($view) {
-            $view->with('categories', Category::orderBy('title')->get());
+        View::composer(['layouts.header', 'components.extensive-search'], function ($view) {
+            $view->with('categories', Category::select('title', 'id')->orderBy('title')->get());
         });
     }
 }
