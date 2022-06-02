@@ -40,6 +40,9 @@
         <link rel="stylesheet" href="{{ asset('js/plugins/owl-carousel/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('js/plugins/owl-carousel/owl.theme.default.min.css') }}">
 
+        {{-- JQformstyler --}}
+        <link href="{{ asset('js/plugins/jqformstyler/jquery.formstyler.css') }}" rel="stylesheet">
+
         {{-- Selectize --}}
         <link href="{{ asset('js/plugins/selectize/dist/css/selectize.css') }}" rel="stylesheet">
 
@@ -62,6 +65,9 @@
 
         {{-- Yandex share buttons --}}
         <script src="https://yastatic.net/share2/share.js"></script>
+
+        {{-- JQformstyler --}}
+        <script src="{{ asset('js/plugins//jqformstyler/jquery.formstyler.min.js') }}"></script>
 
         {{-- Selectize --}}
         <script src="{{ asset('js/plugins/selectize/dist/js/standalone/selectize.min.js') }}"></script>

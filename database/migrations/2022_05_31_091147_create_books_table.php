@@ -26,9 +26,6 @@ return new class extends Migration
             $table->integer('pages');
             $table->integer('views');
             $table->boolean('most_readable');
-            $table->string('slider_text_color')->nullable(); // text color
-            $table->string('slider_background_color')->nullable(); // text color
-            $table->string('slider_button_color')->nullable(); // text color
             $table->timestamps();
         });
     }

@@ -44,11 +44,50 @@ button {
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
 }
+figure {
+    margin: 0;
+}
 .unselectable {
     -webkit-user-select: none;
     -ms-user-select: none; 
     user-select: none;
 }
+
+/* ------------ Shiny Effect ------------ */
+.shiny-effect {
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+}
+.shiny-effect::before {
+    position: absolute;
+    top: 0;
+    left: -83%;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 50%;
+    height: 100%;
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+    -webkit-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+.shiny-effect:hover::before {
+    -webkit-animation: shine .75s;
+    animation: shine .75s;
+}
+@-webkit-keyframes shine {
+    100% {
+        left: 125%;
+    }
+ }
+ @keyframes shine {
+    100% {
+        left: 125%;
+    }
+ }
+/* ------------ /end Shinny Effect ------------ */
 
 
 /* ------------ Main ------------ */
@@ -59,6 +98,7 @@ button {
 }
 .main__inner {
     padding: 40px 0;
+    width: 100%;
 }
 .main-container {
     max-width: 1520px;
@@ -85,6 +125,7 @@ button {
     font-weight: 400;
     text-decoration: none;
     line-height: 1;
+    width: 100%;
 }
 .button {
     border-radius: 6px;
@@ -361,3 +402,133 @@ button {
     border-radius: 8px;
 }
 /* ------------ /end Selectize ------------ */
+
+
+/* ------------ Most Readable ------------ */
+.most-readable-books__inner {
+    flex-direction: column;
+}
+.most-readable-books__title-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.most-readable-books__title {
+    margin: 0;
+}
+.most-readable-books__navs-container {
+    display: flex;
+}
+.most-readable-books__nav {
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: var(--main-color);
+}
+.most-readable-books-carousel .owl-item {
+    padding-bottom: 100px;
+}
+.horizontal-card {
+    padding: 26px 24px 28px;
+    border-radius: 12px;
+    width: 472px;
+    background-color: #383840;
+    color: white;
+}
+.horizontal-card__title {
+    margin-bottom: 12px;
+    padding-right: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.horizontal-card__row {
+    display: flex;
+}
+.horizontal-card__text-content {
+    width: 60%;
+    padding-right: 16px;
+}
+.horizontal-card__author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0.8;
+    line-height: 1;
+    gap: 6px;
+}
+.horizontal-card__author span {
+    font-size: 20px;
+}
+.horizontal-card__description {
+    display: -webkit-box;
+    margin-bottom: 16px;
+    font-size: 15px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    line-height: 1.6;
+}
+.horizontal-card__button {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 12px;
+    padding: 9px 24px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    text-transform: uppercase;
+    line-height: 1;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.68);
+    text-decoration: none;
+    transition: 0.3s;
+}
+.horizontal-card__button:hover {
+    background-color: white;
+}
+.horizontal-card__button span {
+    font-size: 16px;
+}
+.horizontal-card__image-container {
+    display: flex;
+    align-items: flex-end;
+    width: 40%;
+    margin-bottom: -76px;
+    box-shadow: 0 8px 16px rgb(0 0 0 / 20%);
+}
+.horizontal-card__image {
+    border-radius: 6px;
+}
+/* ------------ /end Most Readable ------------ */
+
+
+/* ------------ Home page ------------ */
+/* Books section */
+.home-books {
+    background: var(--secondary-background-color);
+}
+.home-books__inner {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    flex-direction: column;
+}
+.extensive-search-title {
+    text-align: center;
+    margin-bottom: 24px;
+}
+.extensive-search {
+    width: 100%;
+}
+/* ------------ /end Home page ------------ */
+
+
