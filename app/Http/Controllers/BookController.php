@@ -14,7 +14,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Ҳамаи китобҳо'; 
+        $books = Book::latest()->paginate(30);
+        $description = null;
+
+        return view('categories.show', compact('title', 'books', 'description'));
     }
 
     /**
@@ -44,9 +48,11 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show($slug)
     {
-        //
+        $book = Book::where('slug', $slug)->firstOrFail();
+        
+        return view('books.show', compact('book'));
     }
 
     /**

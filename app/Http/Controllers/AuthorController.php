@@ -12,9 +12,46 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // used in search & filter by letter
+        $allAuthors = Author::orderBy('name')->select('name', 'slug', 'popular')->get();
+        if($request->popular) {
+            $allAuthors = $allAuthors->where('popular', true);
+        }
+
+        // filter by letter
+        $filterLetters = [];
+
+        // get all letters
+        foreach($allAuthors as $author) {
+            array_push($filterLetters, mb_substr($author->name, 0, 1));
+        }
+
+        // remove duplicates letters
+        $filterLetters = array_unique($filterLetters);
+
+        // paginate authors due to request
+        $authors = Author::orderBy('foreign')->orderBy('name');
+
+        // filter popular
+        $popular = $request->popular;
+        if($popular) {
+            $authors = $authors->where('popular', true);
+        }
+
+        // filter by letter
+        $activeLetter = $request->letter;
+        if($activeLetter) {
+            $authors = $authors->where('name', 'LIKE', $activeLetter . '%');
+        }
+
+        $authors = $authors->paginate(30)->appends($request->except('page'));
+
+        // generate page title
+        $title = $popular ? 'Муаллифони машҳур' : 'Муаллифон';
+
+        return view('authors.index', compact('allAuthors', 'authors', 'filterLetters', 'activeLetter', 'popular', 'title'));
     }
 
     /**
@@ -44,9 +81,11 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function show(Author $author)
+    public function show($slug)
     {
-        //
+        $author = Author::where('slug', $slug)->firstOrFail();
+
+        return view('authors.show', compact('author'));
     }
 
     /**

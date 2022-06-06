@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -44,9 +45,45 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($slug)
     {
-        //
+        $category = Category::where('slug', $slug)->firstOrFail();
+
+        $title = $category->title; 
+        $books = $category->books()->paginate(30);
+        $description = $category->description;
+
+        return view('categories.show', compact('title', 'books', 'description'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function worldMostReadable()
+    {
+        $title = 'Серхондатарин китобҳои ҷаҳон'; 
+        $books = Book::where('most_readable', true)->paginate(30);
+        $description = null;
+
+        return view('categories.show', compact('title', 'books', 'description'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function topBooks()
+    {
+        $title = 'Серхондатарин китобҳои сомона'; 
+        $books = Book::orderBy('views', 'desc')->paginate(30);
+        $description = null;
+
+        return view('categories.show', compact('title', 'books', 'description'));
     }
 
     /**

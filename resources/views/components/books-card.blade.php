@@ -1,7 +1,7 @@
 @props(['book', 'class' => ''])
 
 <div class="books-card {{ $class }}">
-    <a class="books-card__link" href="#">
+    <a class="books-card__link" href="{{ route('books.show', $book->slug) }}">
         <figure class="books-card__figure shiny-effect">
             <img class="books-card__image" src="{{ asset('img/books/thumbs/' . $book->image) }}" alt="{{ $book->title }}">
         </figure>

@@ -6,7 +6,7 @@
     <section class="most-readable-books">
         <div class="most-readable-books__inner main-container">
             <div class="most-readable-books__title-container">
-                <h1 class="secondary-title most-readable-books__title"><a href="#">Серхондатарин китобҳои ҷаҳон</a></h1>
+                <h1 class="secondary-title most-readable-books__title"><a href="{{ route('categories.world-most-readable') }}">Серхондатарин китобҳои ҷаҳон</a></h1>
 
                 <div class="most-readable-books__navs-container">
                     <button class="most-readable-books__nav" id="most-readable-books-carousel-prev-button"><span class="material-icons-outlined">arrow_back_ios</span></button>
@@ -42,7 +42,7 @@
                 {{-- Latest books start --}}
                 <div class="latest-books">
                     <h1 class="secondary-title latest-books__title"><a href="#">Китобҳои тозанашр</a></h1>
-                    <x-books-list :books="$latestBooks" />
+                    <x-books-list :books="$latestBooks" pagination="false" />
                 </div>  {{-- Latest books start --}}
             </div>
         </div>
@@ -50,10 +50,10 @@
 
     <section class="home-top-books">
         <div class="home-top-books__inner main-container">
-            <div class="home-top-books__title">
+            <a href="{{ route('categories.top-books') }}" class="home-top-books__title">
                 <h2 class="home-top-books__title-h2">Серхонандатарин</h2>
                 <p class="home-top-books__title-p">китобҳои сомона</p>
-            </div>
+            </a>
 
             <ul class="home-top-books__list">
                 @foreach ($topBooks as $book)

@@ -28,10 +28,10 @@
         <link rel="apple-touch-icon-precomposed" href="{{ asset('img/main/cropped-favi-180x180.ico') }}">
         <meta name="msapplication-TileImage" content="{{ asset('img/main/cropped-favi-256x256.ico') }}">
 
-        {{-- Google Roboto & Cuprum Fonts --}}
+        {{-- Google Roboto & Roboto Condensed Fonts --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Cuprum:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
         {{-- Material Icons --}}
         <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">

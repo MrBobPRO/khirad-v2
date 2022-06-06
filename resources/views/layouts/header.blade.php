@@ -11,13 +11,13 @@
                 </li>
 
                 <li class="header-nav__li categories-dropdown">
-                    <a href="#" class="header-nav__link categories-dropdown__button">Дастабандӣ <span class="material-icons">arrow_drop_down</span></a>
+                    <button class="header-nav__link categories-dropdown__button">Дастабандӣ <span class="material-icons">arrow_drop_down</span></button>
 
                     <div class="categories-dropdown__content">
                         <ul class="categories-dropdown__list">
                             @foreach ($categories as $category)
                                 <li>
-                                    <a href="#">{{ $category->title }}</a>
+                                    <a href="{{ route('categories.show', $category->slug) }}">{{ $category->title }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -26,15 +26,15 @@
 
 
                 <li class="header-nav__li">
-                    <a href="#" class="header-nav__link">Ҳамаи китобҳо</a>
+                    <a href="{{ route('books.index') }}" class="header-nav__link">Ҳамаи китобҳо</a>
                 </li>
 
                 <li class="header-nav__li">
-                    <a href="#" class="header-nav__link">Китобҳои хориҷӣ</a>
+                    <a href="{{ route('categories.show', 'kitobhoi-horiji') }}" class="header-nav__link">Китобҳои хориҷӣ</a>
                 </li>
 
                 <li class="header-nav__li">
-                    <a href="#" class="header-nav__link">Муаллифон</a>
+                    <a href="{{ route('authors.index') }}" class="header-nav__link">Муаллифон</a>
                 </li>
 
                 <li class="header-nav__li">

@@ -42,23 +42,23 @@
                     <h3 class="footer__main-title">Илова бар ин</h3>
                     <ul class="footer__list">
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">Ҳамаи китобҳо</a>
+                            <a href="{{ route('books.index') }}" class="footer__list-link">Ҳамаи китобҳо</a>
                         </li>
 
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">Серхондатарин китобҳои ҷаҳон</a>
+                            <a href="{{ route('categories.world-most-readable') }}" class="footer__list-link">Серхондатарин китобҳои ҷаҳон</a>
                         </li>
 
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">Серхондатарин китобҳои сомона</a>
+                            <a href="{{ route('categories.top-books') }}" class="footer__list-link">Серхондатарин китобҳои сомона</a>
                         </li>
 
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">Китобҳои хориҷӣ</a>
+                            <a href="{{ route('categories.show', 'kitobhoi-horiji') }}" class="footer__list-link">Китобҳои хориҷӣ</a>
                         </li>
 
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">Муаллифони машҳур</a>
+                            <a href="{{ route('authors.index') }}?popular=true" class="footer__list-link">Муаллифони машҳур</a>
                         </li>
 
                         <li class="footer__list-item">
