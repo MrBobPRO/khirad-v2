@@ -862,6 +862,125 @@ figure {
 /* ------------ /end Authors show Page ------------ */
 
 
+/* ------------ Contacts Page ------------ */
+.contacts-section__inner {
+    flex-direction: column;
+    max-width: 1120px;
+    padding-bottom: 70px;
+}
+.contacts-form-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+.form-group {
+    display: flex;
+    gap: 20px;
+}
+.feedback-form__input, .feedback-form__textarea {
+    padding: 8px 16px;
+    border: solid 1px #d0d0d0b3;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    border-radius: 4px;
+}
+.feedback-form__input::placeholder, .feedback-form__textarea::placeholder {
+    color: #bdbdbd;
+}
+.feedback-form__input:focus, .feedback-form__textarea:focus {
+    border-color: black;
+    outline: none;
+}
+.feedback-form__button {
+    width: max-content;
+    padding: 14px 40px;
+    font-size: 15px;
+}
+.contacts-page #map {
+    height: 100%;
+    min-height: 400px;
+    width: 50%;
+} 
+/* ------------ /end Contacts Page ------------ */
+
+
+/* ------------ Accordion ------------ */
+.accordion__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 16px 8px 20px;
+    background: white;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.accordion__button-icon {
+    transition: 0.3s;
+    pointer-events: none;
+}
+.accordion__button--active .accordion__button-icon {
+    transform: rotate(180deg);
+}
+.accordion__collapse {
+    height: 0px;
+    background: white;
+    -moz-transition: height .3s;
+    -ms-transition: height .3s;
+    -o-transition: height .3s;
+    -webkit-transition: height .3s;
+    transition: height .3s;
+    overflow: hidden;
+}
+.accordion__collapse--show {
+    height: 100%;
+}
+.accordion__collapse-body {
+    padding: 20px 16px;
+}
+/* ------------ /end Accordion ------------ */
+
+
+/* ------------ FAQ Page ------------ */
+.faq-section__inner {
+    flex-direction: column;
+    max-width: 1120px;
+    padding-bottom: 70px;
+}
+.faq-accordion {
+    margin-top: 40px;
+}
+.accordion__button {
+    border: 1px solid rgba(0,0,0,.125);
+    border-collapse: collapse;
+    background: var(--secondary-background-color);
+    font-weight: 400;
+    font-size: 16px;
+    padding: 20px 32px;
+    text-align: left;
+}
+.accordion__button-icon {
+    color: var(--main-color);
+}
+.accordion__collapse-body {
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 20px 32px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+}
+/* ------------ /end FAQ Page ------------ */
+
+
+
 /* ------------ JQuery Form Styler ------------ */
 .jq-selectbox__select {
     height: 100%;

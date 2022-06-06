@@ -16,4 +16,14 @@ class MainController extends Controller
 
         return view('home.index', compact('mostReadableBooks', 'latestBooks', 'recommendedBooks', 'topBooks'));
     }
+
+    public function contacts()
+    {
+        return view('contacts.index');
+    }
+
+    public function faq()
+    {
+        return view('faq.index');
+    }
 }

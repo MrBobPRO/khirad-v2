@@ -73,6 +73,10 @@
         {{-- Selectize --}}
         <script src="{{ asset('js/plugins/selectize/dist/js/standalone/selectize.min.js') }}"></script>
 
+        @if (request()->route()->getName() == 'contacts')
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAneCOkP0fjY3gOXV9DYFTdA59yWXDvNLw&callback=initMap" async defer></script>
+        @endif
+
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

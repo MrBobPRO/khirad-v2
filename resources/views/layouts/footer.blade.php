@@ -62,7 +62,7 @@
                         </li>
 
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">Савол - ҷавоб</a>
+                            <a href="{{ route('faq') }}" class="footer__list-link">Савол - ҷавоб</a>
                         </li>
                     </ul>
                 </div>
@@ -71,25 +71,25 @@
                     <h3 class="footer__main-title">Тамос</h3>
                     <ul class="footer__list">
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">
+                            <a class="footer__list-link">
                                 <span class="material-icons">navigation </span> Индекс 734064
                             </a>
                         </li>
 
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">
+                            <a href="{{ route('contacts') }}" class="footer__list-link">
                                 <span class="material-icons">place</span> Ҷумҳурии Тоҷикистон <br> ш. Душанбе, кӯчаи Шамси 4Б
                             </a>
                         </li>
 
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">
+                            <a href="tel:+992927685858" class="footer__list-link">
                                 <span class="material-icons">phone</span> +992 927685858
                             </a>
                         </li>
 
                         <li class="footer__list-item">
-                            <a href="#" class="footer__list-link">
+                            <a href="mailto:info@khirad.tj" class="footer__list-link">
                                 <span class="material-icons">email</span> info@khirad.tj
                             </a>
                         </li>

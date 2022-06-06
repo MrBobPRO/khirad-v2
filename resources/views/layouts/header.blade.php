@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="header-nav__li">
-                    <a href="#" class="header-nav__link">Тамос</a>
+                    <a href="{{ route('contacts') }}" class="header-nav__link">Тамос</a>
                 </li>
             </ul>
         </nav>

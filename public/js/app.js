@@ -52,3 +52,71 @@ if (document.querySelector('#most-readable-books-carousel')) {
         mostReadableBooksCarousel.trigger('next.owl.carousel');
     })
 }
+
+
+// google maps
+if (document.querySelector('#map')) {
+    let map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 38.578065, lng: 68.750778},
+            zoom: 16,
+            mapTypeControl: false,
+            streetViewControl: false
+      });
+    
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: false,
+        animation: google.maps.Animation.BOUNCE,
+        position: {lat: 38.578065, lng: 68.750778},
+            icon: '/img/main/marker.png'
+      });
+      marker.addListener('click', toggleBounce);
+    }
+    
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }   
+}
+
+
+// --------------Accordion start----------------
+document.querySelectorAll('.accordion__button').forEach((item) => {
+    item.addEventListener('click', (evt) => {
+        let button = evt.target;
+        let parent = button.closest('.accordion__item');
+        let accordion = button.closest('.accordion');
+        let collapse = parent.getElementsByClassName('accordion__collapse')[0];
+
+        // close any other active collapses
+        let activeCollapses = accordion.getElementsByClassName('accordion__collapse--show');
+        for (i = 0; i < activeCollapses.length; i ++) {
+            if (activeCollapses[i] !== collapse) { // remove active class from collapse button
+                let activeCollapseParent = activeCollapses[i].closest('.accordion__item');
+                let activeButton = activeCollapseParent.getElementsByClassName('accordion__button')[0];
+                activeButton.classList.remove('accordion__button--active');
+                // remove show class from collapse
+                activeCollapses[i].style.height = null;
+                activeCollapses[i].classList.remove('accordion__collapse--show');
+            }
+        }
+
+        // hide collapse body if its active
+        if (collapse.clientHeight) {
+            collapse.style.height = 0;
+            collapse.classList.remove('accordion__collapse--show');
+            button.classList.remove('accordion__button--active');
+        // else show collapse body if its hidden
+        } else {
+            collapse.style.height = collapse.scrollHeight + "px";
+            collapse.classList.add('accordion__collapse--show');
+            button.classList.add('accordion__button--active');
+        }
+    });
+});
+// --------------Accordion end----------------
