@@ -43,13 +43,19 @@
             </ul>
         </nav>
 
-        <form class="header-search" action="/search" method="GET">
-            <input class="header-search__input header-search__input--hidden" type="text" list="header-search-datalist" autocomplete="off" name="keyword" placeholder="Ҷӯстуҷӯ..." minlength="3" required>
+        <form class="header-search" action="{{ route('search') }}" method="GET" id="header-search-form">
+            <input class="header-search__input header-search__input--hidden" type="text" list="header-search-datalist" autocomplete="off" name="keyword" id="header-search-input" placeholder="Ҷӯстуҷӯ..." minlength="3" required>
             <datalist id="header-search-datalist">
-                <option value="Bobur Nuridinov">
+                @foreach ($searchAuthorKeywords as $keyword)
+                    <option value="{{ $keyword }}">
+                @endforeach
+
+                @foreach ($searchBookKeywords as $keyword)
+                    <option value="{{ $keyword }}">
+                @endforeach
             </datalist>
 
-            <button class="header-search__button button--transparent" type="button">
+            <button class="header-search__button button--transparent" type="button" id="header-search-button">
                 <span class="material-icons-outlined">search</span>
             </button>
         </form>  {{-- global seach end --}}

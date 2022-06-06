@@ -22,7 +22,7 @@ Route::controller(MainController::class)->group(function () {
     Route::get('/contacts', 'contacts')->name('contacts');
     Route::get('/faq', 'faq')->name('faq');
 
-    Route::post('/search', 'search')->name('search');
+    Route::get('/search', 'search')->name('search');
 });
 
 Route::controller(CategoryController::class)->prefix('categories')->name('categories.')->group(function () {

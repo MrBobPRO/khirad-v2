@@ -709,22 +709,6 @@ figure {
 .category-books__inner {
     flex-direction: column;
 }
-.category-books__description {
-    display: flex;
-    gap: 12px;
-    margin-top: 32px;
-    padding: 20px;
-    color: #664d03;
-    background-color: var(--main-background-color);
-    border-radius: 12px;
-    line-height: 1.6;
-}
-.category-books__description span {
-    color: var(--main-color);
-}
-.category-books__description p {
-    margin: 0;
-}
 /* ------------ /end Categories page ------------ */
 
 
@@ -741,6 +725,7 @@ figure {
 .books-info__figure {
     border-radius: 6px;
     box-shadow: 0px 0px 8px 0px rgb(34 60 80 / 20%);
+    display: flex;
 }
 .books-info__title {
     font-size: 20px;
@@ -794,7 +779,7 @@ figure {
 }
 .authors-filter {
     display: flex;
-    padding: 20px;
+    padding: 16px 20px;
     color: #664d03;
     background-color: var(--main-background-color);
     border-radius: 12px;
@@ -804,6 +789,7 @@ figure {
 .authors-filter__title {
     margin: 0;
     font-size: 18px;
+    font-weight: 500;
 }
 .authors-filter__list {
     padding: 0;
@@ -811,9 +797,10 @@ figure {
     display: flex;
     list-style: none;
     gap: 8px;
+    font-weight: 300;
 }
 .authors-filter__link--active {
-    font-weight: bold;
+    font-weight: 500;
     color: var(--main-color);
     padding-bottom: 2px;
     border-bottom: 2px solid;
@@ -910,6 +897,33 @@ figure {
     width: 50%;
 } 
 /* ------------ /end Contacts Page ------------ */
+
+
+/* ------------ Search page ------------ */
+.search-section__inner {
+    flex-direction: column;
+}
+/* ------------ /end Search Page ------------ */
+
+
+/* ------------ Alert ------------ */
+.alert {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    padding: 20px;
+    color: #664d03;
+    background-color: var(--main-background-color);
+    border-radius: 12px;
+    line-height: 1.6;
+}
+.alert__icon {
+    color: var(--main-color);
+}
+.alert__text {
+    margin: 0;
+}
+/* ------------ /end Alert ------------ */
 
 
 /* ------------ Accordion ------------ */

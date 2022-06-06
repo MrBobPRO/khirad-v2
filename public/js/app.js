@@ -22,6 +22,26 @@ $.ajaxSetup({
 });
 
 
+// scroll top button
+document.querySelector('#scroll-top-button').addEventListener('click', () => {
+    document.body.scrollIntoView({ block: 'start', behavior: 'smooth' });
+})
+
+
+// Header search
+document.querySelector('#header-search-button').addEventListener('click', () => {
+    let input = document.querySelector('#header-search-input');
+
+    // submit form if value is givven
+    if (!input.classList.contains('header-search__input--hidden') && input.value.length > 2) {
+        document.querySelector('#header-search-form').submit();
+    // else hide search input
+    } else {
+        input.classList.toggle('header-search__input--hidden');
+        input.focus();
+    }
+});
+
 // most readable carousel
 if (document.querySelector('#most-readable-books-carousel')) {
     let mostReadableBooksCarousel = $('#most-readable-books-carousel').owlCarousel({

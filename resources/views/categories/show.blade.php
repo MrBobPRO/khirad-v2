@@ -6,9 +6,9 @@
         <div class="category-books__inner main-container">
             <h1 class="category-books__title  main-title">{{ $title }}</h1>
             @if($description && $description != '')
-                <div class="category-books__description">
-                    <span class="material-icons">info</span>
-                    <p>{{ $description }}</p>
+                <div class="alert">
+                    <span class="material-icons alert__icon">info</span>
+                    <p class="alert__text">{{ $description }}</p>
                 </div>
             @endif
 
