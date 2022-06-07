@@ -56,6 +56,21 @@ class BookController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Book  $book
+     * @return \Illuminate\Http\Response
+     */
+    public function read(Request $request)
+    {
+        $book = Book::where('slug', $request->name)->firstOrFail();
+        $book->views = $book->views + 1;
+        $book->save();
+        
+        return view('books.read', compact('book'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Book  $book

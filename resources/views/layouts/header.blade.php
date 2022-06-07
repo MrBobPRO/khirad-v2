@@ -7,7 +7,7 @@
         <nav class="header-nav">
             <ul class="header-nav__ul">
                 <li class="header-nav__li">
-                    <a href="#" class="header-nav__link">Асосӣ</a>
+                    <a href="{{ route('home') }}" class="header-nav__link">Асосӣ</a>
                 </li>
 
                 <li class="header-nav__li categories-dropdown">

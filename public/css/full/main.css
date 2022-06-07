@@ -735,6 +735,59 @@ figure {
     font-weight: 300;
     line-height: 1.8;
 }
+.books-info__actions {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+.books-info__read-button {
+    font-size: 15px;
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    padding: 12px 32px;
+    box-shadow: none;
+    line-height: 1;
+    border-radius: 8px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+    background: #038980;
+}
+.books-info__read-button:hover {
+    background-color: var(--main-color);
+    color: white;
+    border: 1px solid var(--main-color);
+    box-shadow: 0 4px 16px rgb(0 0 0 / 25%);
+}
+.books-info__read-button span {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+.books-info__order-button {
+    font-size: 15px;
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    padding: 12px 32px;
+    box-shadow: none;
+    line-height: 1;
+    border: 1px solid var(--main-background-color);
+    background-color: var(--main-background-color);
+    border-radius: 8px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+}
+.books-info__order-button:hover {
+    background-color: black;
+    border-color: black;
+    color: white;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 25%);
+}
+.books-info__order-button span {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
 .book-properties-table {
     width: 80%;
 }

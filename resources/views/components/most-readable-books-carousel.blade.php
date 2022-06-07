@@ -12,7 +12,7 @@
                             <span class="material-icons">account_circle</span> {{ $book->authors()->first()->name }}
                         </p>
                         <p class="horizontal-card__description">{{ $book->description }}</p>                                
-                        <a href="#" class="horizontal-card__button">
+                        <a href="{{ route('books.show', $book->slug) }}" class="horizontal-card__button">
                             Муфассал <span class="material-icons-outlined">east</span>
                         </a>
                     </div>

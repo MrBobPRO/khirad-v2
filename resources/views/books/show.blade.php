@@ -18,18 +18,30 @@
                 </h1>
                 <p class="book-info__description">{{ $book->description }}</p>
 
+                <div class="books-info__actions">
+                    <a class="button button--main books-info__read-button" href="{{ route('books.read')}}?name={{ $book->slug }}" target="_blank">
+                        <span class="material-icons">auto_stories</span> {{ $book->price > 0 ? 'Хондани қисмате аз китоб' : 'Хондани китоб' }}
+                    </a>
+
+                    @if ($book->price > 0)
+                        <button class="button books-info__order-button">
+                            <span class="material-icons">paid</span> Фармоиши китоб
+                        </button>
+                    @endif
+                </div>
+
                 <table class="book-properties-table">
                     <tbody>
                         <tr>
                             <th>Нарх:</th>
-                            <td class="main-color text-bold">{{ $book->price == '0' ? 'Ройгон' : $book->price }}</td>
+                            <td class="main-color text-bold">{{ $book->price == '0' ? 'Ройгон' : $book->price . ' сом.' }}</td>
                         </tr>
     
                         <tr>
                             <th>Муаллиф:</th>
                             <td>
                                 @foreach ($book->authors as $author)
-                                    <a href="#">
+                                    <a href="{{ route('authors.show', $author->slug) }}">
                                         {{ $author->name }}
                                     </a>
                                 @endforeach

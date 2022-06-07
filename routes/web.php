@@ -31,9 +31,11 @@ Route::controller(CategoryController::class)->prefix('categories')->name('catego
     Route::get('/{slug}', 'show')->name('show');
 });
 
-Route::controller(BookController::class)->prefix('books')->name('books.')->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::get('/{slug}', 'show')->name('show');
+Route::controller(BookController::class)->name('books.')->group(function () {
+    Route::get('/all-books', 'index')->name('index');
+    Route::get('/books/{slug}', 'show')->name('show');
+
+    Route::get('/read-book', 'read')->name('read');
 });
 
 Route::controller(AuthorController::class)->prefix('authors')->name('authors.')->group(function () {
