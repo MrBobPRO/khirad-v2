@@ -35,7 +35,15 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new Order();
+        $order->name = $request->name;
+        $order->email = $request->email;
+        $order->phone = $request->phone;
+        $order->address = $request->address;
+        $order->book_id = $request->book_id;
+        $order->save();
+
+        return redirect()->back();
     }
 
     /**

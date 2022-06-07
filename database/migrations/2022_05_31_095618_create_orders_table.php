@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address');
             $table->integer('book_id');
-            $table->boolean('new');
+            $table->boolean('new')->default(1);
             $table->timestamps();
         });
     }

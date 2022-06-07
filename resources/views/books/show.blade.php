@@ -1,6 +1,22 @@
 @extends('layouts.app')
 @section('main')
 
+@section('title', $book->title)
+
+@section('meta-tags')
+    @php
+        $shareText = App\Helpers\Helper::generateShareText($book->description);
+    @endphp
+
+    <meta name="description" content="{{ $shareText }}">
+    <meta property="og:description" content="{{ $shareText }}">
+    <meta property="og:title" content="{{ $book->title }}" />
+    <meta property="og:image" content="{{ asset('img/books/' . $book->image) }}">
+    <meta property="og:image:alt" content="{{ $book->title }}">
+    <meta name="twitter:title" content="{{ $book->title }}">
+    <meta name="twitter:image" content="{{ asset('img/books/' . $book->image) }}">
+@endsection
+
 <div class="main__inner books-show-page">
     <section class="books-info">
         <div class="books-info__inner main-container">
@@ -19,12 +35,12 @@
                 <p class="book-info__description">{{ $book->description }}</p>
 
                 <div class="books-info__actions">
-                    <a class="button button--main books-info__read-button" href="{{ route('books.read')}}?name={{ $book->slug }}" target="_blank">
+                    <a class="button button--secondary" href="{{ route('books.read')}}?name={{ $book->slug }}" target="_blank">
                         <span class="material-icons">auto_stories</span> {{ $book->price > 0 ? 'Хондани қисмате аз китоб' : 'Хондани китоб' }}
                     </a>
 
                     @if ($book->price > 0)
-                        <button class="button books-info__order-button">
+                        <button class="button button--thirdinary" data-action="show-modal" data-target-id="order-modal">
                             <span class="material-icons">paid</span> Фармоиши китоб
                         </button>
                     @endif
@@ -91,5 +107,7 @@
         </div>
     </section>
 </div>
+
+<x-order-modal :id="$book->id" />
 
 @endsection

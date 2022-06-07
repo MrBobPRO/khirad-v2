@@ -140,3 +140,20 @@ document.querySelectorAll('.accordion__button').forEach((item) => {
     });
 });
 // --------------Accordion end----------------
+
+
+//modals
+document.querySelectorAll('[data-action="show-modal"]').forEach(item => {
+    item.addEventListener('click', event => {
+        document.getElementById(item.dataset.targetId).classList.add('show');
+        document.body.style.overflowY = "hidden";
+    });
+});
+
+//hide modals
+document.querySelectorAll('[data-action="hide-modal"]').forEach(item => {
+    item.addEventListener('click', event => {
+        document.body.style.overflowY = "auto";
+        document.getElementById(item.dataset.targetId).classList.remove('show');
+    });
+});

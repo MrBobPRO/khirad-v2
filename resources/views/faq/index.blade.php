@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('main')
 
+@section('title', 'Савол - ҷавоб')
+
 <div class="main__inner faq-page">
     <section class="faq-section">
         <div class="faq-section__inner main-container">

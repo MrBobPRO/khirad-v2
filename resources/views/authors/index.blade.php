@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('main')
 
+@section('title', $title)
+
 <div class="main__inner authors-index-page">
     <section class="authors-search-section">
         <div class="authors-search-section__inner main-container">

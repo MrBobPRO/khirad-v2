@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,10 @@ Route::controller(BookController::class)->name('books.')->group(function () {
 Route::controller(AuthorController::class)->prefix('authors')->name('authors.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/{slug}', 'show')->name('show');
+});
+
+Route::controller(OrderController::class)->prefix('orders')->name('orders.')->group(function () {
+    Route::post('/store', 'store')->name('store');
 });
 
 require __DIR__.'/auth.php';
