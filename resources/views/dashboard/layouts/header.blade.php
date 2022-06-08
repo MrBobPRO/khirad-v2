@@ -15,10 +15,10 @@
         @if(strpos($route, 'create') ) / Добавить
 
         {{-- second level for EDIT --}}
-        @elseif($route == 'books.edit') / #{{ $item->title }}
+        @elseif($route == 'books.edit') / {{ $item->title }}
         @elseif($route == 'authors.edit') / {{ $item->name }}
         @elseif($route == 'categories.edit') / {{ $item->title }}
-        @elseif($route == 'orders.edit') / #{{ $item->book->title }}
+        @elseif($route == 'orders.edit') / {{ $item->book->title }}
         @endif
     </h1>  {{-- Title end --}}
 

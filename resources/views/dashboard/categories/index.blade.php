@@ -4,7 +4,7 @@
 @if($activePage == 1)
     <div class="alert alert-warning">
         <span class="material-icons">info</span>
-        При удалении автора, также удалятся все его книги!
+        При удалении категории, также удалятся все книги находящиеся в этой категории!
     </div>
 @endif
 
@@ -23,24 +23,12 @@
 
                 @php $reversedOrderType = App\Helpers\Helper::reverseOrderType($orderType); @endphp
 
-                <th width="130">
-                    Изображение
-                </th>
-
-                <th width="200">
-                    <a class="{{ $orderType }} {{ $orderBy == 'name' ? 'active' : '' }}" href="{{ route($modelShortcut . '.dashboard.index') }}?page={{ $activePage }}&orderBy=name&orderType={{ $reversedOrderType }}">Имя</a>
+                <th width="220">
+                    <a class="{{ $orderType }} {{ $orderBy == 'title' ? 'active' : '' }}" href="{{ route($modelShortcut . '.dashboard.index') }}?page={{ $activePage }}&orderBy=title&orderType={{ $reversedOrderType }}">Заголовок</a>
                 </th>
 
                 <th>
-                    Биография
-                </th>
-
-                <th>
-                    <a class="{{ $orderType }} {{ $orderBy == 'foreign' ? 'active' : '' }}" href="{{ route($modelShortcut . '.dashboard.index') }}?page={{ $activePage }}&orderBy=foreign&orderType={{ $reversedOrderType }}">Национальность</a>
-                </th>
-
-                <th>
-                    <a class="{{ $orderType }} {{ $orderBy == 'popular' ? 'active' : '' }}" href="{{ route($modelShortcut . '.dashboard.index') }}?page={{ $activePage }}&orderBy=popular&orderType={{ $reversedOrderType }}">Популярность</a>
+                    Описание
                 </th>
 
                 <th>
@@ -67,17 +55,14 @@
                         </div>
                     </td>
 
-                    <td><img src="{{ asset('img/authors/thumbs/' . $item->image) }}"></td>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ mb_strlen($item->biography) > 200 ? (mb_substr($item->biography, 0, 200) . '...') : $item->biography }}</td>
-                    <td>{{ $item->foreign ? 'Зарубежный' : 'Таджик' }}</td>
-                    <td>{{ $item->popular ? 'Популярный' : '' }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ mb_strlen($item->description) > 200 ? (mb_substr($item->description, 0, 200) . '...') : $item->description }}</td>
                     <td>{{ $item->books_count }}</td>
 
                     {{-- Actions --}}
                     <td>
                         <div class="table__actions">
-                            <a class="button--main" href="{{ route('authors.show', $item->slug) }}" target="_blank"
+                            <a class="button--main" href="{{ route('categories.show', $item->slug) }}" target="_blank"
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Посмотреть">
                                 <span class="material-icons">visibility</span>
                             </a>
