@@ -1177,7 +1177,7 @@ button {
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
-    transition: 0.3s linear;
+    transition: 0.2s linear;
     opacity: 0;
     align-items: center;
     justify-content: center;
@@ -1191,7 +1191,7 @@ button {
 .modal-background {
     position: absolute;
     z-index: 1;
-    background-color: #8f8f8fbf;
+    background-color: #505050bf;
     left: 0;
     top: 0;
     width: 100%;
@@ -1200,7 +1200,7 @@ button {
 .modal-dialog {
     z-index: 2;
     transform: translate(0,-50px);
-    transition: transform .3s ease-out;
+    transition: transform .2s ease-out;
     border-radius: 8px;
     padding: 32px 28px;
     min-width: 320px;

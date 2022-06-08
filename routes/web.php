@@ -48,4 +48,45 @@ Route::controller(OrderController::class)->prefix('orders')->name('orders.')->gr
     Route::post('/store', 'store')->name('store');
 });
 
+
+Route::middleware('auth')->prefix('dashboard')->group(function () {
+    Route::get('/', [BookController::class, 'dashboardIndex'])->name('dashboard.index');
+
+    Route::controller(BookController::class)->prefix('/books')->name('books.')->group(function () {
+        Route::get('/create', 'create')->name('create');
+        Route::get('/{id}', 'edit')->name('edit');
+
+        Route::post('/store', 'store')->name('store');
+        Route::post('/update', 'update')->name('update');
+        Route::post('/destroy', 'destroy')->name('destroy');
+    });
+
+    Route::controller(AuthorController::class)->prefix('/authors')->name('authors.')->group(function () {
+        Route::get('/', 'dashboardIndex')->name('dashboard.index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/{id}', 'edit')->name('edit');
+
+        Route::post('/store', 'store')->name('store');
+        Route::post('/update', 'update')->name('update');
+        Route::post('/destroy', 'destroy')->name('destroy');
+    });
+
+    Route::controller(CategoryController::class)->prefix('/categories')->name('categories.')->group(function () {
+        Route::get('/', 'dashboardIndex')->name('dashboard.index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/{id}', 'edit')->name('edit');
+
+        Route::post('/store', 'store')->name('store');
+        Route::post('/update', 'update')->name('update');
+        Route::post('/destroy', 'destroy')->name('destroy');
+    });
+
+    Route::controller(OrderController::class)->prefix('/orders')->name('orders.')->group(function () {
+        Route::get('/', 'dashboardIndex')->name('dashboard.index');
+        Route::get('/{id}', 'edit')->name('edit');
+
+        Route::post('/destroy', 'destroy')->name('destroy');
+    });
+});
+
 require __DIR__.'/auth.php';

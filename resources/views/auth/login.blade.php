@@ -1,56 +1,122 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <title>Хирад</title>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <meta name="robots" content="none"/>
+        <meta name="googlebot" content="noindex, nofollow" />
+        <meta name="yandex" content="none">
 
-        <form method="POST" action="{{ route('login') }}">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+        <style>
+            *, ::before, ::after {
+                box-sizing: border-box
+            }
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                padding: 12px;
+                margin: 0;
+                background-color: #F3F4F6;
+                font-family: Roboto, sans-serif;
+                font-size: 14px
+            }
+            .form {
+                background-color: white;
+                border-color: rgba(229, 231, 235, 1);
+                border-radius: 0.5rem;
+                padding: 30px;
+                box-shadow: 0 0 10px #0000001c;
+                max-width: 100%
+            }
+            .logo {
+                margin-bottom: 16px;
+                width: 160px;
+            }
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+            .label {
+                color: grey;
+            }
+            .input {
+                max-width: 100%;
+                width: 400px;
+                padding: 10px;
+                border: 1px solid #c3c3c3;
+                border-radius: 5px;
+            }
+            .input--error {
+                border-color: red;
+            }
+            .error-message {
+                color: red;
+                margin-top: 0;
+            }
+            .submit {
+                display: flex;
+                padding: 8px 20px;
+                margin-left: auto;
+                font-family: Roboto, sans-serif;
+                font-size: 12px;
+                color: white;
+                text-transform: uppercase;
+                background-color: #1F2937;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <form class="form" method="POST" action="/login">
             @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+            <a href="/" target="_blank">
+                <img class="logo" src="{{ asset('img/main/logo.png') }}">
+            </a>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            @if($errors->any())
+                <p class="error-message">Неверный логин или пароль !</p>
+            @endif
+
+            <!-- Email Address -->
+            <div class="form-group">
+                <label class="label" for="email">Email</label>
+                <input class="input {{ $errors->any() ? 'input--error' : '' }}" id="email" type="email" name="email" value="{{ old('email') }}" required autofocus />
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+            <div class="form-group">
+                <label class="label" for="password">Пароль</label>
+                <input class="input {{ $errors->any() ? 'input--error' : '' }}" id="password" type="password" name="password" required/>
             </div>
 
             <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+            <div class="form-group">
+                <label class="label" for="remember_me">
+                    <input id="remember_me" type="checkbox" name="remember" checked>
+                    <span>Запомнить меня</span>
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
+            <button class="submit">Войти</button>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+
+    </body>
+</html>
