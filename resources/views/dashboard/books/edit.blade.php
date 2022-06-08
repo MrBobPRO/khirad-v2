@@ -6,34 +6,58 @@
     <input type="hidden" name="id" value="{{ $item->id }}">
 
     <div class="form-group">
-        <label class="required">Текст</label>
-        <textarea class="form-textarea" name="body" rows="7" required>{{ old('body') ?? $item->body }}</textarea>
+        <label class="required">Заголовок</label>
+        <input type="text" class="form-input" name="title" value="{{ old('title') ?? $item->title }}" required />
     </div>
 
     <div class="form-group">
-        <label class="required">Автор</label>
-        <select class="selectize-singular" name="author_id" required>
-            @foreach ($authors as $author)
-                <option value="{{ $author->id }}" @selected($author->id == $item->author_id)>{{ $author->name }}</option>
-            @endforeach
-        </select>
+        <label class="required">Описание</label>
+        <textarea class="form-textarea" name="description" rows="7" required>{{ old('description') ?? $item->description }}</textarea>
     </div>
 
     <div class="form-group">
-        <label>Источник</label>
-        <select class="selectize-singular" name="source_id" placeholder="Выберите источник">
-            <option></option>
-            @foreach ($sources as $source)
-                <option value="{{ $source->id }}" @selected($source->id == $item->source_id)>{{ $source->title }}</option>
-            @endforeach
-        </select>
+        <label>Обложка</label>
+        <input class="form-input" name="image" type="file" accept=".png, .jpg, .jpeg"
+        data-action="show-image-from-local" data-target="local-image">
+
+        <img class="form-image" src="{{ asset('img/books/' . $item->image) }}" id="local-image">
+    </div>
+
+    <div class="form-group">
+        <label>Книга (pdf файл) : <a href="/books/{{ $item->filename }}" target="_blank">{{ $item->filename }}</a></label>
+        <input class="form-input" name="filename" type="file" accept=".pdf">
+    </div>
+
+    <div class="form-group">
+        <label class="required">Цена. Оставьте 0 если книга бесплатная</label>
+        <input type="number" class="form-input" name="price" value="{{ old('price') ?? $item->price }}" required />
     </div>
 
     <div class="form-group">
         <label class="required">Издатель</label>
-        <select class="selectize-singular" name="user_id" required>
-            @foreach ($users as $user)
-                <option value="{{ $user->id }}" @selected($user->id == $item->user_id)>{{ $user->name }}</option>
+        <input type="text" class="form-input" name="publisher" value="{{ old('publisher') ?? $item->publisher }}" required />
+    </div>
+
+    <div class="form-group">
+        <label class="required">Год выпуска</label>
+        <input type="number" class="form-input" name="publish_year" value="{{ old('publish_year') ?? $item->publish_year }}" required />
+    </div>
+
+    <div class="form-group">
+        <label class="required">Количество страниц</label>
+        <input type="number" class="form-input" name="pages" value="{{ old('pages') ?? $item->pages }}" required />
+    </div>
+
+    <div class="form-group">
+        <label class="required">Автор</label>
+        <select class="selectize-multiple" name="authors[]" multiple="multiple" required>
+            @foreach ($authors as $author)
+                <option value="{{ $author->id }}"
+                    @foreach ($item->authors as $itemAuth)
+                        @selected($author->id == $itemAuth->id)
+                    @endforeach
+                    >{{ $author->name }}
+                </option>
             @endforeach
         </select>
     </div>
@@ -53,10 +77,10 @@
     </div>
 
     <div class="form-group">
-        <label class="required">Добавить в популярные цитаты?</label>
-        <select class="selectize-singular" name="popular" required>
-            <option value="0" @selected(!$item->popular)>Нет</option>
-            <option value="1" @selected($item->popular)>Да</option>
+        <label class="required">Добавить в Серхондатарин китобҳои ҷаҳон?</label>
+        <select class="selectize-singular" name="most_readable" required>
+            <option value="0" @selected(!$item->most_readable)>Нет</option>
+            <option value="1" @selected($item->most_readable)>Да</option>
         </select>
     </div>
 

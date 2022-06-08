@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class BookController extends Controller
 {
@@ -84,7 +89,7 @@ class BookController extends Controller
                 ->appends($request->except('page'));
         }
 
-        // orderBy Author name 
+        // orderBy Author names
         else if ($orderBy == 'author_names') {
             $items = Book::selectRaw('group_concat(authors.name order by authors.name asc) as author_names, books.*')
                 ->join('author_book', 'books.id', '=', 'author_book.book_id')
@@ -114,9 +119,10 @@ class BookController extends Controller
         // used while generating route names
         $modelShortcut = self::MODEL_SHORTCUT;
 
-        $users = User::orderBy('name')->select('name', 'id')->get();
+        $authors = Author::orderBy('name', 'asc')->select('name', 'id')->get();
+        $categories = Category::orderBy('title', 'asc')->select('title', 'id')->get();
 
-        return view('dashboard.authors.create', compact('modelShortcut', 'users'));
+        return view('dashboard.books.create', compact('modelShortcut', 'authors', 'categories'));
     }
 
     /**
@@ -129,35 +135,40 @@ class BookController extends Controller
     {
         // validate request
         $validationRules = [
-            'name' => [
+            'title' => [
                 'required',
-                Rule::unique('authors'),
+                Rule::unique('books'),
             ],
         ];
 
         $validationMessages = [
-            "name.unique" => "Автор с таким названием уже существует !",
+            "title.unique" => "Книга с таким заголовком уже существует !",
         ];
 
         Validator::make($request->all(), $validationRules, $validationMessages)->validate();
 
-        // store quote
-        $author = new Author();
-        $fields = ['name', 'user_id', 'biography', 'popular', 'individual'];
-        Helper::fillModelColumns($author, $fields, $request);
-        $author->slug = Helper::generateUniqueSlug($request->name, Author::class);
+        // store item
+        $book = new Book();
+        $fields = ['title', 'description', 'price', 'publisher', 'publish_year', 'pages', 'most_readable'];
+        Helper::fillModelColumns($book, $fields, $request);
+        $book->slug = Helper::generateUniqueSlug($request->title, Book::class);
 
-        Helper::uploadModelsFile($request, $author, 'image', $author->slug, self::IMAGE_PATH, 300);
+        // upload files
+        Helper::uploadModelsFile($request, $book, 'image', $book->slug, self::IMAGE_PATH, 600);
+        Helper::createThumbs(self::IMAGE_PATH, $book->image, 240);
+        Helper::uploadModelsFile($request, $book, 'filename', $book->slug, self::FILE_PATH);
 
-        $author->save();
+        $book->save();
 
-        return redirect()->route('authors.dashboard.index');
+        $book->categories()->attach($request->categories);
+        $book->authors()->attach($request->authors);
+
+        return redirect()->route('dashboard.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Quote  $quote
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -165,45 +176,56 @@ class BookController extends Controller
         // used while generating route names
         $modelShortcut = self::MODEL_SHORTCUT;
 
-        $item = Author::find($id);
-        $users = User::orderBy('name')->select('name', 'id')->get();
+        $item = Book::find($id);
+        $authors = Author::orderBy('name', 'asc')->select('name', 'id')->get();
+        $categories = Category::orderBy('title', 'asc')->select('title', 'id')->get();
 
-        return view('dashboard.authors.edit', compact('modelShortcut', 'item', 'users'));
+        return view('dashboard.books.edit', compact('modelShortcut', 'item', 'authors', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Quote  $quote
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
-        $author = Author::find($request->id);
+        $book = Book::find($request->id);
 
         // validate request
         $validationRules = [
-            'name' => [
+            'title' => [
                 'required',
-                Rule::unique('authors')->ignore($author->id),
+                Rule::unique('books')->ignore($book->id),
             ],
         ];
 
         $validationMessages = [
-            "name.unique" => "Автор с таким названием уже существует !",
+            "title.unique" => "Книга с таким заголовком уже существует !",
         ];
 
         Validator::make($request->all(), $validationRules, $validationMessages)->validate();
 
-        // update author
-        $fields = ['name', 'user_id', 'biography', 'popular', 'individual'];
-        Helper::fillModelColumns($author, $fields, $request);
-        $author->slug = Helper::generateUniqueSlug($request->name, Author::class, $author->id);
+        $fields = ['title', 'description', 'price', 'publisher', 'publish_year', 'pages', 'most_readable'];
+        Helper::fillModelColumns($book, $fields, $request);
+        $book->slug = Helper::generateUniqueSlug($request->title, Book::class, $book->id);
 
-        Helper::uploadModelsFile($request, $author, 'image', $author->slug, self::IMAGE_PATH, 300);
+        // upload files
+        Helper::uploadModelsFile($request, $book, 'image', $book->slug, self::IMAGE_PATH, 600);
+        if($request->file('image')) {
+            Helper::createThumbs(self::IMAGE_PATH, $book->image, 240);
+        }
+        Helper::uploadModelsFile($request, $book, 'filename', $book->slug, self::FILE_PATH);
 
-        $author->save();
+        $book->save();
+
+        // reattach manyToMany relations
+        $book->categories()->detach();
+        $book->categories()->attach($request->categories);
+
+        $book->authors()->detach();
+        $book->authors()->attach($request->authors);
 
         return redirect()->back();
     }
@@ -224,9 +246,9 @@ class BookController extends Controller
         $ids = (array) $request->id;
         
         foreach($ids as $id) {
-            Author::find($id)->delete();
+            Book::find($id)->delete();
         }
         
-        return redirect()->route('authors.dashboard.index');
+        return redirect()->route('dashboard.index');
     }
 }

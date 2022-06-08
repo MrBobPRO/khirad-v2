@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('slug');
             $table->string('filename');
             $table->string('image');
-            $table->float('price');
+            $table->integer('price');
             $table->text('description');
             $table->string('publisher');
             $table->integer('publish_year');
             $table->integer('pages');
-            $table->integer('views');
+            $table->integer('views')->default(0);
             $table->boolean('most_readable');
             $table->timestamps();
         });

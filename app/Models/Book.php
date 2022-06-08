@@ -23,4 +23,22 @@ class Book extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        // Also delete model relations while deleting
+        static::deleting(function ($book) {
+            $book->categories()->detach();
+            $book->authors()->detach();
+
+            $book->orders()->each(function ($order) {
+                $order->delete();
+            });
+        });
+    }
 }
