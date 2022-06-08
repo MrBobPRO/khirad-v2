@@ -34,8 +34,9 @@
 <body>
     @include('dashboard.layouts.header')
     @include('dashboard.layouts.aside')
-
+    
     <main class="main" id="main">
+        @include('dashboard.layouts.spinner')
         @include('dashboard.layouts.errors')
         @yield('main')
     </main>

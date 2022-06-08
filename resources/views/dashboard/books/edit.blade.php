@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 @section("main")
 
-<form action="{{ route($modelShortcut . '.update') }}" method="POST" class="form" enctype="multipart/form-data">
+<form action="{{ route($modelShortcut . '.update') }}" method="POST" data-on-submit="show-spinner" class="form" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="id" value="{{ $item->id }}">
 

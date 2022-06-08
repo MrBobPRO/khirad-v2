@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.app')
 @section("main")
 
-<form action="{{ route($modelShortcut . '.store') }}" method="POST" class="form" enctype="multipart/form-data">
+<form action="{{ route($modelShortcut . '.store') }}" method="POST" data-on-submit="show-spinner" class="form" enctype="multipart/form-data">
     @csrf
 
     <div class="form-group">

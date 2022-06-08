@@ -125,3 +125,11 @@ document.querySelectorAll('[data-action="show-image-from-local"]').forEach(input
         }
     });
 });
+
+
+// show spinner on form submit while uploading big files
+document.querySelectorAll('[data-on-submit="show-spinner"]').forEach((item) => {
+    item.addEventListener('submit', () => {
+        document.querySelector('#spinner').classList.remove('spinner--hidden');
+    });
+});
