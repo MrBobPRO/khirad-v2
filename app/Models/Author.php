@@ -13,4 +13,19 @@ class Author extends Model
     {
         return $this->belongsToMany(Book::class);
     }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        // Also delete model relations while deleting
+        static::deleting(function ($author) {
+            $author->books()->each(function ($book) {
+                $book->delete();
+            });
+        });
+    }
 }
