@@ -7,25 +7,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    const MODEL_SHORTCUT = 'orders';
 
     /**
      * Store a newly created resource in storage.
@@ -47,47 +29,67 @@ class OrderController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a listing of the resource in dashboard
      *
-     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function dashboardIndex(Request $request)
     {
-        //
+        // used while generating route names
+        $modelShortcut = self::MODEL_SHORTCUT;
+
+        // for search & counting on index pages
+        $allItems = Order::select('id')->get();
+
+        // Default parameters for ordering
+        $orderBy = $request->orderBy ? $request->orderBy : 'created_at';
+        $orderType = $request->orderType ? $request->orderType : 'desc';
+        $activePage = $request->page ? $request->page : 1;
+
+        $items = Order::orderBy($orderBy, $orderType)
+                ->paginate(30, ['*'], 'page', $activePage)
+                ->appends($request->except('page'));
+
+        return view('dashboard.orders.index', compact('modelShortcut', 'allItems', 'items', 'orderBy', 'orderType', 'activePage'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Quote  $quote
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
-        //
+        // used while generating route names
+        $modelShortcut = self::MODEL_SHORTCUT;
+
+        $item = Order::find($id);
+        $item->new = false;
+        $item->save();
+
+        return view('dashboard.orders.edit', compact('modelShortcut', 'item'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Request for deleting items by id may come in integer type (single item destroy form) 
+     * or in array type (multiple item destroy form)
+     * That`s why we need to get them in array type and delete them by loop
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
+     * Checkout Model Boot methods deleting function 
+     * Models relations also deleted on deleting function of Models Boot method
+     * 
+     * @param  int/array  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $ids = (array) $request->id;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
-    {
-        //
+        foreach ($ids as $id) {
+            Order::find($id)->delete();
+        }
+
+        return redirect()->route('orders.dashboard.index');
     }
 }

@@ -122,7 +122,7 @@ class CategoryController extends Controller
 
         Validator::make($request->all(), $validationRules, $validationMessages)->validate();
 
-        // store quote
+        // store
         $category = new Category();
         $fields = ['title', 'description'];
         Helper::fillModelColumns($category, $fields, $request);
@@ -174,7 +174,7 @@ class CategoryController extends Controller
 
         Validator::make($request->all(), $validationRules, $validationMessages)->validate();
 
-        // update category
+        // update 
         $fields = ['title', 'description'];
         Helper::fillModelColumns($category, $fields, $request);
         $category->slug = Helper::generateUniqueSlug($request->title, Category::class, $category->id);

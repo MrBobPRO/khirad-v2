@@ -15,7 +15,7 @@
     </div>
 
     <div class="form-group">
-        <label>Обложка</label>
+        <label class="required">Обложка</label>
         <input class="form-input" name="image" type="file" accept=".png, .jpg, .jpeg" required
         data-action="show-image-from-local" data-target="local-image">
 
@@ -23,7 +23,7 @@
     </div>
 
     <div class="form-group">
-        <label>Книга (pdf файл)</label>
+        <label class="required">Книга (pdf файл)</label>
         <input class="form-input" name="filename" type="file" accept=".pdf" required>
     </div>
 

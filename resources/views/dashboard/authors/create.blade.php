@@ -15,8 +15,8 @@
     </div>
 
     <div class="form-group">
-        <label>Изображение</label>
-        <input class="form-input" name="image" type="file" accept=".png, .jpg, .jpeg"
+        <label class="required">Изображение</label>
+        <input class="form-input" name="image" type="file" accept=".png, .jpg, .jpeg" required
         data-action="show-image-from-local" data-target="local-image">
 
         <img class="form-image" src="{{ asset('img/dashboard/default-image.png') }}" id="local-image">
