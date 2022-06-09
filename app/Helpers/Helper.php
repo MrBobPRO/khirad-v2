@@ -253,4 +253,118 @@ class Helper
 
         return $routeName;
     }
+
+    private function fillDBfromOldDB() {
+        // copying categories
+        Jategories::all()->each(function ($j) {
+            $c = new Category();
+            $c->id = $j->id;
+            $c->title = $j->name;
+            if($j->id == 26 || $j->id == 27 || $j->id == 28 || $j->id == 29) {
+                $c->description = null;
+            } else {
+                $c->description = $j->description;
+            }
+            $c->slug = Helper::generateUniqueSlug($j->name, Category::class);
+            $c->save();
+        });
+
+
+        // copying Authors
+        Jauthor::where('trashed', false)->orderBy('id')->each(function ($old) {
+            $new = new Author();
+            $new->id = $old->id;
+            $new->name = $old->name;
+            $new->slug = Helper::generateUniqueSlug($new->name, Author::class);
+
+            $extension = pathinfo($old->photo, PATHINFO_EXTENSION);
+            $newImageName = $new->slug  . '.' . $extension;
+            rename(public_path('img/jauthors/' . $old->photo), public_path('img/authors/' . $newImageName));
+
+            $new->image = $newImageName;
+            $new->biography = $old->biography;
+            $new->foreign = $old->foreign;
+            $new->popular = $old->popular;
+
+            $new->save();
+        });
+
+        // copying books
+        Jook::where('trashed', false)->orderBy('id')->each(function ($old) {
+            $new = new Book();
+            $new->id = $old->id;
+            $new->title = $old->name;
+            $new->slug = Helper::generateUniqueSlug($new->title, Book::class);
+
+            $extension = pathinfo($old->filename, PATHINFO_EXTENSION);
+            $newFileName = $new->slug  . '.' . $extension;
+            copy(public_path('jooks/' . $old->filename), public_path('books/' . $newFileName));
+
+            $new->filename = $newFileName;
+
+            $extension = pathinfo($old->photo, PATHINFO_EXTENSION);
+            $newImageName = $new->slug  . '.' . $extension;
+            copy(public_path('img/jooks/' . $old->photo), public_path('img/books/' . $newImageName));
+
+            $new->image = $newImageName;
+            if($old->free || $old->price < 1) {
+                $new->price = 0;
+            } else {
+                $new->price = intval($old->price);
+            }
+            $new->description = $old->description;
+            $new->publisher = $old->publisher;
+            $new->publish_year = $old->year;
+            $new->pages = $old->pages;
+            $new->views = $old->number_of_readings;
+            $new->most_readable = $old->most_readable;
+
+            $new->save();
+        });
+
+        // orders
+        Jorder::orderBy('id')->each(function ($old) {
+            $new = new Order();
+            $new->name = $old->name;
+            $new->email = 'Электронная почта';
+            $new->phone = $old->phone;
+            $new->address = 'Адрес';
+            $new->book_id = $old->book_id;
+            $new->new = $old->new;
+            $new->save();
+        });
+
+
+        // deleting removed items relations
+        DB::table('author_book')->get()->each(function ($item) {
+            $author = Author::find($item->author_id);
+            $book = Book::find($item->book_id);
+
+            if(!$author) {
+                DB::table('author_book')->where('author_id', $item->author_id)->delete();
+            }
+
+            if(!$book) {
+                DB::table('author_book')->where('book_id', $item->book_id)->delete();
+            }
+        });
+
+        DB::table('book_category')->get()->each(function ($item) {
+            $book = Book::find($item->book_id);
+            $category = Category::find($item->category_id);
+
+            if(!$category) {
+                DB::table('book_category')->where('category_id', $item->category_id)->delete();
+            }
+
+            if(!$book) {
+                DB::table('book_category')->where('book_id', $item->book_id)->delete();
+            }
+        });
+    }
 }
+
+
+
+
+
