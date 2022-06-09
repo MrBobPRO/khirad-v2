@@ -24,7 +24,7 @@
 
             <div class="authors-biography__text-container">
                 <h2 class="authors-biography__title">{{ $author->name }}</h2>
-                <p class="authors-biography__text">{{ $author->biography }}</p>
+                <p class="authors-biography__text">{!! $author->biography !!}</p>
             </div>
         </div>
     </section>

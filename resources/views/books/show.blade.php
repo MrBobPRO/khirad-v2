@@ -32,7 +32,7 @@
                         {{ $author->name }}
                     @endforeach
                 </h1>
-                <p class="book-info__description">{{ $book->description }}</p>
+                <p class="book-info__description">{!! $book->description !!}</p>
 
                 <div class="books-info__actions">
                     <a class="button button--secondary" href="{{ route('books.read')}}?name={{ $book->slug }}" target="_blank">

@@ -143,7 +143,7 @@ class AuthorController extends Controller
         $author->slug = Helper::generateUniqueSlug($request->name, Author::class);
 
         Helper::uploadModelsFile($request, $author, 'image', $author->slug, self::IMAGE_PATH, 600);
-        Helper::createThumbs(self::IMAGE_PATH, $author->image, 240);
+        Helper::createThumbs(self::IMAGE_PATH, $author->image, 240, 282);
 
         $author->save();
 
@@ -198,7 +198,7 @@ class AuthorController extends Controller
 
         Helper::uploadModelsFile($request, $author, 'image', $author->slug, self::IMAGE_PATH, 600);
         if($request->file('image')) {
-            Helper::createThumbs(self::IMAGE_PATH, $author->image, 240);
+            Helper::createThumbs(self::IMAGE_PATH, $author->image, 240, 282);
         }
 
         $author->save();

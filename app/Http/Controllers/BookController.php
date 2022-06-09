@@ -155,7 +155,7 @@ class BookController extends Controller
 
         // upload files
         Helper::uploadModelsFile($request, $book, 'image', $book->slug, self::IMAGE_PATH, 600);
-        Helper::createThumbs(self::IMAGE_PATH, $book->image, 240);
+        Helper::createThumbs(self::IMAGE_PATH, $book->image, 240, 336);
         Helper::uploadModelsFile($request, $book, 'filename', $book->slug, self::FILE_PATH);
 
         $book->save();
@@ -214,7 +214,7 @@ class BookController extends Controller
         // upload files
         Helper::uploadModelsFile($request, $book, 'image', $book->slug, self::IMAGE_PATH, 600);
         if($request->file('image')) {
-            Helper::createThumbs(self::IMAGE_PATH, $book->image, 240);
+            Helper::createThumbs(self::IMAGE_PATH, $book->image, 240, 336);
         }
         Helper::uploadModelsFile($request, $book, 'filename', $book->slug, self::FILE_PATH);
 
