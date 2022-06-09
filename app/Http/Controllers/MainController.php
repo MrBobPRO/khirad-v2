@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Feedback;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
@@ -62,5 +64,12 @@ class MainController extends Controller
         $books = $books->paginate(30);
 
         return view('search.index', compact('books', 'booksCount', 'keyword'));
+    }
+
+    public function feedback(Request $request)
+    {
+        Mail::to('info@khirad.tj')->send(new Feedback($request));
+
+        return redirect()->back();
     }
 }

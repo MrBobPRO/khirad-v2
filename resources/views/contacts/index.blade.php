@@ -9,7 +9,9 @@
             <h1 class="main-title contacts-section__title">Ба мо нависед</h1>
 
             <div class="contacts-form-container">
-                <form class="feedback-form" action="#">
+                <form class="feedback-form" action="{{ route('feedback') }}" method="POST">
+                    @csrf
+
                     <div class="form-group">
                         <input class="input feedback-form__input" type="text" name="name" placeholder="Номи Шумо">
                         <input class="input feedback-form__input" type="text" name="email" placeholder="Почта*">

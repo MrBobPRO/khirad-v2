@@ -24,6 +24,7 @@ Route::controller(MainController::class)->group(function () {
     Route::get('/faq', 'faq')->name('faq');
 
     Route::get('/search', 'search')->name('search');
+    Route::post('/send-feedback', 'feedback')->name('feedback');
 });
 
 Route::controller(CategoryController::class)->prefix('categories')->name('categories.')->group(function () {
