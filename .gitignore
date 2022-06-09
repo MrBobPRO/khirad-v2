@@ -12,3 +12,13 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+.htaccess
+
+/public/books/*
+/public/img/authors/*
+!/public/img/authors/thumbs
+/public/img/authors/thumbs/*
+/public/img/books/*
+!/public/img/books/thumbs
+/public/img/books/thumbs/*
