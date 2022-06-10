@@ -1,0 +1,31 @@
+@media screen and (max-width: 1500px) {
+    .header-nav__link {
+        font-size: 16px;
+    }
+    .categories-dropdown__button span {
+        font-size: 20px;
+    }
+    .categories-dropdown__list a {
+        font-weight: 300;
+        /* color: #444444; */
+    }
+    .scroll-top-button {
+        bottom: 40px;
+    }
+    .scroll-top-button span {
+        font-size: 40px;
+    }
+    .books-info__inner {
+        gap: 60px;
+    }
+    .authors-biography-section__inner {
+        gap: 80px;
+    }
+    .authors-biography__text-container {
+        padding-top: 12px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+
+}

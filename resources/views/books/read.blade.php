@@ -28,17 +28,18 @@
     <meta name="msapplication-TileImage" content="{{ asset('img/main/cropped-favi-256x256.ico') }}">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
     body {
-        background-color: #333;
+        height: 100vh;
         margin: 0;
-        padding: 0;
+        padding: 10px;
+        background-color: #333;
     }
     .container {
-        height: 95vh;
-        width: 95%;
-        margin: 20px auto;
-        border: 2px solid #038980;
-        box-shadow: 0 0 5px #038980;
+        height: 100%;
+        width: 100%;
     }
     .fullscreen {
         background-color: #333;

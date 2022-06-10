@@ -48,6 +48,7 @@
         <link href="{{ asset('js/plugins/selectize/dist/css/selectize.css') }}" rel="stylesheet">
 
         <link rel="stylesheet" href="{{ asset('css/full/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/full/media.css') }}">
     </head>
     
     <body>
