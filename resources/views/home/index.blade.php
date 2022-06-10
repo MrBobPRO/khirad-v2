@@ -41,7 +41,7 @@
     
                 {{-- Latest books start --}}
                 <div class="latest-books">
-                    <h1 class="secondary-title latest-books__title"><a href="#">Китобҳои тозанашр</a></h1>
+                    <h1 class="secondary-title latest-books__title"><a href="{{ route('books.index') }}">Китобҳои тозанашр</a></h1>
                     <x-books-list :books="$latestBooks" pagination="false" />
                 </div>  {{-- Latest books start --}}
             </div>

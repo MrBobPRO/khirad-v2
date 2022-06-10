@@ -19,7 +19,7 @@
     <section class="category-books">
         <div class="category-books__inner main-container">
             <h1 class="category-books__title  main-title">{{ $title }}</h1>
-            @if($description && $description != '')
+            @if($description && $description != '' && $books->currentPage() == 1)
                 <div class="alert">
                     <span class="material-icons alert__icon">info</span>
                     <p class="alert__text">{{ $description }}</p>
