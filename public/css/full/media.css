@@ -7,7 +7,6 @@
     }
     .categories-dropdown__list a {
         font-weight: 300;
-        /* color: #444444; */
     }
     .scroll-top-button {
         bottom: 40px;
@@ -27,5 +26,29 @@
 }
 
 @media screen and (max-width: 991px) {
+    .main-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .mobile-menu-toggler {
+        display: block;
+    }
+    .header-nav {
+        display: none;
+    }
+    .header-search {
+        display: none;
+    }
 
+
+
+    .home-books {
+        display: none;
+    }
+    .home-top-books {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
 }

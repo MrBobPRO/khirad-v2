@@ -4,6 +4,11 @@
             <img class="logo__image" src="{{ asset('img/main/logo.png') }}" alt="Хирад лого">
         </a>
 
+        <button class="mobile-menu-toggler" data-action="toggle-mobile-menu">
+            <span class="material-icons-outlined">menu</span>
+        </button>
+
+        {{-- Header Nav --}}
         <nav class="header-nav">
             <ul class="header-nav__ul">
                 <li class="header-nav__li">
@@ -24,7 +29,6 @@
                     </div>
                 </li>
 
-
                 <li class="header-nav__li">
                     <a href="{{ route('books.index') }}" class="header-nav__link">Ҳамаи китобҳо</a>
                 </li>
@@ -41,8 +45,9 @@
                     <a href="{{ route('contacts') }}" class="header-nav__link">Тамос</a>
                 </li>
             </ul>
-        </nav>
+        </nav>  {{-- Header Nav end --}}
 
+        {{-- Global Search --}}
         <form class="header-search" action="{{ route('search') }}" method="GET" id="header-search-form">
             <input class="header-search__input header-search__input--hidden" type="text" list="header-search-datalist" autocomplete="off" name="keyword" id="header-search-input" placeholder="Ҷӯстуҷӯ..." minlength="3" required>
             <datalist id="header-search-datalist">
@@ -59,5 +64,59 @@
                 <span class="material-icons-outlined">search</span>
             </button>
         </form>  {{-- global seach end --}}
+
+        {{-- Mobile Menu --}}
+        <div class="mobile-menu">
+            <div class="mobile-menu__overlay" data-action="toggle-mobile-menu"></div>
+
+            <nav class="mobile-menu__nav">
+                <button class="mobile-menu__close-btn button--transparent" data-action="toggle-mobile-menu">
+                    <span class="material-icons-outlined">close</span>
+                </button>
+
+                <a href="{{ route('home') }}" class="logo mobile-menu__logo">
+                    <img class="logo__image" src="{{ asset('img/main/logo.png') }}" alt="Хирад лого">
+                </a>
+
+                <ul class="mobile-menu__ul">
+                    <li class="mobile-menu__li">
+                        <a class="mobile-menu__link" href="{{ route('home') }}">Асосӣ</a>
+                    </li>
+
+                    <div class="collapse mobile-menu-collapse">
+                        <button class="collapse__button"> Дастабандӣ
+                            <span class="material-icons-outlined collapse__icon">expand_more</span>
+                        </button>
+        
+                        <div class="collapse__body">
+                            <ul class="mobile-menu-collapse__ul">
+                                @foreach ($categories as $category)
+                                    <li class="mobile-menu-collapse__li">
+                                        <a class="mobile-menu-collapse__link" href="{{ route('categories.show', $category->slug) }}">{{ $category->title }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+
+                    <li class="mobile-menu__li">
+                        <a class="mobile-menu__link" href="{{ route('books.index') }}">Ҳамаи китобҳо</a>
+                    </li>
+
+                    <li class="mobile-menu__li">
+                        <a class="mobile-menu__link" href="{{ route('categories.show', 'kitobhoi-horiji') }}">Китобҳои хориҷӣ</a>
+                    </li>
+
+                    <li class="mobile-menu__li">
+                        <a class="mobile-menu__link" href="{{ route('authors.index') }}">Муаллифон</a>
+                    </li>
+
+                    <li class="mobile-menu__li">
+                        <a class="mobile-menu__link" href="{{ route('contacts') }}">Тамос</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>  {{-- Mobile Menu end--}}
+
     </div>
 </header>

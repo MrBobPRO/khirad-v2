@@ -1,7 +1,7 @@
 // initialize components
 $(document).ready(function () {
     $('.selectize-singular').selectize({
-        //options
+        // options
     });
 
     $('.selectize-singular-linked').selectize({
@@ -41,6 +41,15 @@ document.querySelector('#header-search-button').addEventListener('click', () => 
         input.focus();
     }
 });
+
+
+// Mobile Menu Toggler
+document.querySelectorAll('[data-action="toggle-mobile-menu"]').forEach(item => {
+    item.addEventListener('click', (evt) => {
+        document.querySelector('.mobile-menu').classList.toggle('mobile-menu--visible');
+    });
+});
+
 
 // most readable carousel
 if (document.querySelector('#most-readable-books-carousel')) {
@@ -109,51 +118,61 @@ if (document.querySelector('#map')) {
 document.querySelectorAll('.accordion__button').forEach((item) => {
     item.addEventListener('click', (evt) => {
         let button = evt.target;
-        let parent = button.closest('.accordion__item');
         let accordion = button.closest('.accordion');
-        let collapse = parent.getElementsByClassName('accordion__collapse')[0];
+        let item = button.closest('.accordion__item');
+        let collapse = item.querySelector('.accordion__collapse');
 
-        // close any other active collapses
-        let activeCollapses = accordion.getElementsByClassName('accordion__collapse--show');
-        for (i = 0; i < activeCollapses.length; i ++) {
-            if (activeCollapses[i] !== collapse) { // remove active class from collapse button
-                let activeCollapseParent = activeCollapses[i].closest('.accordion__item');
-                let activeButton = activeCollapseParent.getElementsByClassName('accordion__button')[0];
-                activeButton.classList.remove('accordion__button--active');
-                // remove show class from collapse
-                activeCollapses[i].style.height = null;
-                activeCollapses[i].classList.remove('accordion__collapse--show');
-            }
+        // close active collapse if it isn`t current target 
+        let activeItem = accordion.querySelector('.accordion__item--active');
+        if (activeItem && activeItem !== item) {
+            activeItem.classList.remove('accordion__item--active');
+            activeItem.querySelector('.accordion__collapse').style.height = null;
         }
 
-        // hide collapse body if its active
+        // close active collapse if it is current target 
         if (collapse.clientHeight) {
             collapse.style.height = 0;
-            collapse.classList.remove('accordion__collapse--show');
-            button.classList.remove('accordion__button--active');
+            item.classList.remove('accordion__item--active');
         // else show collapse body if its hidden
         } else {
             collapse.style.height = collapse.scrollHeight + "px";
-            collapse.classList.add('accordion__collapse--show');
-            button.classList.add('accordion__button--active');
+            item.classList.add('accordion__item--active');
         }
     });
 });
-// --------------Accordion end----------------
+// -------------- Accordion end ----------------
 
 
-//modals
+// modals
 document.querySelectorAll('[data-action="show-modal"]').forEach(item => {
-    item.addEventListener('click', event => {
+    item.addEventListener('click', (evt) => {
         document.getElementById(item.dataset.targetId).classList.add('show');
         document.body.style.overflowY = "hidden";
     });
 });
 
-//hide modals
+// hide modals
 document.querySelectorAll('[data-action="hide-modal"]').forEach(item => {
-    item.addEventListener('click', event => {
+    item.addEventListener('click', (evt) => {
         document.body.style.overflowY = "auto";
         document.getElementById(item.dataset.targetId).classList.remove('show');
+    });
+});
+
+
+// collapse
+document.querySelectorAll('.collapse__button').forEach(item => {
+    item.addEventListener('click', (evt) => {
+        let target = evt.target;
+        let collapse = target.closest('.collapse');
+        let body = collapse.querySelector('.collapse__body');
+
+        if (body.clientHeight) {
+            body.style.height = 0;
+            collapse.classList.remove('collapse--active')
+        } else {
+            body.style.height = body.scrollHeight + "px";
+            collapse.classList.add('collapse--active')
+        }
     });
 });
