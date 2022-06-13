@@ -71,12 +71,17 @@
 
             <nav class="mobile-menu__nav">
                 <button class="mobile-menu__close-btn button--transparent" data-action="toggle-mobile-menu">
-                    <span class="material-icons-outlined">close</span>
+                    <span class="material-icons-outlined">arrow_forward</span>
                 </button>
 
-                <a href="{{ route('home') }}" class="logo mobile-menu__logo">
-                    <img class="logo__image" src="{{ asset('img/main/logo.png') }}" alt="Хирад лого">
-                </a>
+                {{-- Mobile Search --}}
+                <form class="mobile-search" action="{{ route('search') }}" method="GET">
+                    <input class="mobile-search__input" type="text" list="header-search-datalist" autocomplete="off" name="keyword" placeholder="Ҷӯстуҷӯи китобҳо..." minlength="3" required>
+        
+                    <button class="mobile-search__button" type="button"">
+                        <span class="material-icons-outlined">search</span>
+                    </button>
+                </form>  {{-- Mobile Search end --}}
 
                 <ul class="mobile-menu__ul">
                     <li class="mobile-menu__li">
