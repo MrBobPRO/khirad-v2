@@ -4,6 +4,7 @@
     <div class="owl-carousel most-readable-books-carousel" id="most-readable-books-carousel">
         @foreach ($books as $book)
             <div class="most-readable-books-carousel__item horizontal-card">
+                <img class="horizontal-card__mobile-image" src="{{ asset('img/books/thumbs/' . $book->image) }}" alt="{{ $book->title }}">
                 <h2 class="horizontal-card__title">{{ $book->title }}</h2>
 
                 <div class="horizontal-card__row">

@@ -78,7 +78,7 @@
                 <form class="mobile-search" action="{{ route('search') }}" method="GET">
                     <input class="mobile-search__input" type="text" list="header-search-datalist" autocomplete="off" name="keyword" placeholder="Ҷӯстуҷӯи китобҳо..." minlength="3" required>
         
-                    <button class="mobile-search__button" type="button"">
+                    <button class="mobile-search__button" type="submit"">
                         <span class="material-icons-outlined">search</span>
                     </button>
                 </form>  {{-- Mobile Search end --}}

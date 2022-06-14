@@ -301,6 +301,12 @@ button {
 }
 .mobile-menu-toggler {
     display: none;
+    color: #fff;
+    background: var(--main-color);
+    border: none;
+    display: flex;
+    padding: 10px;
+    border-radius: 30%;
 }
 .header-nav__ul {
     margin: 0;
@@ -442,7 +448,6 @@ button {
     padding: 0;
     list-style: none;
     width: 100%;
-    border-top: 1px solid #c9c9c9;
 }
 .mobile-menu__li {
     border-bottom: 1px solid #c9c9c9;
@@ -503,6 +508,7 @@ button {
     background: transparent;
     border: none;
     color: white;
+    padding: 8px 14px;
 }
 .mobile-search__button span {
 
@@ -738,6 +744,11 @@ button {
     width: 472px;
     background-color: var(--main-background-color);
     color: black;
+}
+.horizontal-card__mobile-image {
+    display: none !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
 }
 .horizontal-card__title {
     margin-bottom: 12px;

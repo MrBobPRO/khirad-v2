@@ -57,7 +57,7 @@ if (document.querySelector('#most-readable-books-carousel')) {
         margin: 16,
         loop: true,
         dots: false,
-        autoplay: false,
+        autoplay: true,
         autoplayHoverPause: true,
         autoplaySpeed: 4000,
         autoplayTimeout: 7000,

@@ -26,12 +26,28 @@
 }
 
 @media screen and (max-width: 991px) {
+    .scroll-top-button {
+        display: none;
+    }
     .main-container {
         padding-left: 16px;
         padding-right: 16px;
     }
+
+    /* Header */
     .mobile-menu-toggler {
         display: block;
+    }
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 9;
+        -webkit-box-shadow: 0px 4px 8px 0px rgb(34 60 80 / 16%);
+        -moz-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 1.6);
+        box-shadow: 0px 4px 8px 0px rgb(34 60 80 / 16%);
+    }
+    .header__inner {
+        padding: 16px;
     }
     .header-nav {
         display: none;
@@ -41,14 +57,132 @@
     }
 
 
+    /* Footer */
+    .footer__main {
+        padding: 40px 0 32px;
+    }
+    .footer__main-inner {
+        flex-direction: column;
+        gap: 32px;
+    }
+    .footer__about {
+        width: 100%;
+    }
+    .footer__logo {
+        justify-content: center;
+    }
+    .footer__logo img {
+        width: 170px;
+    }
+    .footer__additional-links, .footer__contacts {
+        width: 100%;
+        padding: 0;
+        border-left: none;
+    }
+    .footer__main-title {
+        text-align: center;
+    }
+    .footer__about-socials {
+        justify-content: center;
+    }
+    .footer__about-socials img {
+        width: 30px;
+        border-radius: 6px;
+    }
+    .footer__about-text {
+        font-size: 15px;
+    }
+    .footer__list {
+        font-size: 15px;
+    }
+    .footer__copyright {
+        font-size: 15px;
+    }
 
-    .home-books {
+
+    /* Books List */
+    .books-list {
+        gap: 32px 20px;
+        margin: 32px 0 40px;
+    }
+    .books-list__item {
+        width: calc(50% - 10px);
+    }
+    .books-card__title {
+        font-size: 15px;
+    }
+    .books-card__author {
+        font-size: 15px;
+    }
+
+
+    /*----------- Home Page start-----------*/
+    /* Most Readable Books Carousel */
+    .horizontal-card {
+        width: 100%;
+        padding: 20px 20px 32px;
+        background-color: #edeeef;
+    }
+    .horizontal-card__mobile-image {
+        display: block !important;
+    }
+    .horizontal-card__image-container {
         display: none;
+    }
+    .most-readable-books__title-container {
+        align-items: center;
+    }
+    .horizontal-card__title {
+        padding: 0;
+        margin: 20px 0 12px;
+    }
+    .horizontal-card__text-content {
+        width: 100%;
+        padding-right: 0;
+    }
+    .horizontal-card__button {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 24px;
+        background: black;
+        color: white;
+    }
+    .horizontal-card__button:hover {
+        background: white;
+        color: black;
+    }
+    .most-readable-books-carousel .owl-item {
+        padding-bottom: 20px;
+    }
+
+    /* Home Books */
+    .home-books {
+        background-color: white;
+    }
+    .home-books__inner {
+        padding-top: 20px;
+    }
+    .extensive-search-title {
+        display: none;
+    }
+    .extensive-search {
+        display: none;
+    }
+    .home-books__main {
+        margin: 0;
+    }
+    .recommended-books {
+        display: none;
+    }
+    .latest-books__title {
+        border-bottom: none;
+        padding: 0;
+        text-align: center;
     }
     .home-top-books {
         display: none;
     }
-    footer {
-        display: none;
-    }
+    /*----------- Home Page end-----------*/
+
+
 }
