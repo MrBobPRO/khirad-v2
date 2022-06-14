@@ -68,7 +68,7 @@
         padding: 40px 0 32px;
     }
     .footer__main-inner {
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 24px;
     }
     .footer__about {
@@ -94,9 +94,7 @@
         border-radius: 6px;
     }
     .footer__about-text {
-        margin-top: 0;
-        font-size: 15px;
-        text-align: center;
+        display: none;
     }
     .footer__list {
         font-size: 15px;
@@ -123,6 +121,12 @@
 
 
     /*----------- Home Page start-----------*/
+    .secondary-title {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-style: italic;
+        text-align: center;
+        font-size: 15px;
+    }
     /* Most Readable Books Carousel */
     .horizontal-card {
         width: 100%;
@@ -135,11 +139,8 @@
     .horizontal-card__image-container {
         display: none;
     }
-    .most-readable-books__title-container {
-        align-items: center;
-    }
-    .most-readable-books__title {
-        font-size: 15px;
+    .most-readable-books__navs-container {
+        display: none;
     }
     .horizontal-card__title {
         padding: 0;
@@ -190,7 +191,6 @@
     .latest-books__title {
         border-bottom: none;
         padding: 0;
-        text-align: center;
     }
     .home-top-books {
         display: none;
