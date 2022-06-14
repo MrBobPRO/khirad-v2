@@ -49,6 +49,9 @@ figure {
     -ms-user-select: none; 
     user-select: none;
 }
+.owl-carousel-container {
+    position: relative;
+}
 
 /* ------------ Shiny Effect ------------ */
 .shiny-effect {
@@ -491,7 +494,7 @@ button {
 .mobile-search__input {
     flex-grow: 1;
     background: transparent;
-    padding: 20px;
+    padding: 18px 20px;
     color: white;
     border: none;
     font-size: 16px;
@@ -817,6 +820,41 @@ button {
 }
 .horizontal-card__image {
     border-radius: 6px;
+}
+
+/* Mobile Navs */
+.most-readable-books-carousel .owl-nav {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: calc(50% - 24px);
+    width: calc(100% + 24px);
+    left: -12px;
+}
+.owl-nav .owl-prev, .owl-nav .owl-next {
+    width: 48px;
+    height: 48px;
+    background-color: var(--main-color) !important;
+    border-radius: 50%;
+    color: white !important;
+    position: relative;
+}
+.owl-nav .owl-prev span, .owl-nav .owl-next span {
+    display: none;
+}
+.owl-nav .owl-prev::after {
+    position: absolute;
+    font-family: 'Material Icons Outlined';
+    content: '\e2ea';
+    left: 14px;
+    top: 14px;
+}
+.owl-nav .owl-next::after {
+    position: absolute;
+    font-family: 'Material Icons Outlined';
+    content: '\e5e1';
+    right: 14px;
+    top: 14px;
 }
 /* ------------ /end Most Readable ------------ */
 

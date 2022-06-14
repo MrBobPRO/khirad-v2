@@ -69,7 +69,7 @@
 
             <nav class="mobile-menu__nav">
                 <button class="mobile-menu__close-btn button--transparent" data-action="toggle-mobile-menu">
-                    <span class="material-icons-outlined">arrow_forward</span>
+                    <span class="material-icons-outlined">arrow_right_alt</span>
                 </button>
 
                 {{-- Mobile Search --}}

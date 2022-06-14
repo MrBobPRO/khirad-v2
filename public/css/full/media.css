@@ -50,7 +50,7 @@
         box-shadow: 0px 2px 2px 0px rgb(34 60 80 / 16%);
     }
     .header__inner {
-        padding: 16px;
+        padding: 14px 16px;
     }
     .header__logo {
         width: 140px;
@@ -191,6 +191,9 @@
     .latest-books__title {
         border-bottom: none;
         padding: 0;
+    }
+    .home-books .books-list__item:nth-child(15) {
+        display: none;
     }
     .home-top-books {
         display: none;

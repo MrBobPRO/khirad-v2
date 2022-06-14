@@ -65,6 +65,7 @@ if (document.querySelector('#most-readable-books-carousel')) {
             0: {
                 items: 1,
                 autoWidth: false,
+                nav: true
             },
             991: {
                 autoWidth: true,
