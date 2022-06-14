@@ -26,12 +26,15 @@
 }
 
 @media screen and (max-width: 991px) {
-    .scroll-top-button {
-        display: none;
+    .main__inner {
+        padding-top: 32px;
     }
     .main-container {
         padding-left: 16px;
         padding-right: 16px;
+    }
+    .scroll-top-button {
+        display: none;
     }
 
     /* Header */
@@ -81,6 +84,7 @@
     }
     .footer__main-title {
         text-align: center;
+        font-size: 15px;
     }
     .footer__about-socials {
         justify-content: center;
@@ -122,7 +126,7 @@
     /* Most Readable Books Carousel */
     .horizontal-card {
         width: 100%;
-        padding: 32px 36px;
+        padding: 24px 24px 28px;
         background-color: #edeeef;
     }
     .horizontal-card__mobile-image {
