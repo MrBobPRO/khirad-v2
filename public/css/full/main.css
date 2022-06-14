@@ -435,11 +435,8 @@ button {
     color: white;
     display: flex;
     margin-left: -48px;
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
-}
-.mobile-menu__close-btn span {
-    font-size: 28px;
 }
 .mobile-menu__ul {
     margin: 0;
@@ -494,7 +491,7 @@ button {
 .mobile-search__input {
     flex-grow: 1;
     background: transparent;
-    padding: 18px 20px;
+    padding: 16px 20px;
     color: white;
     border: none;
     font-size: 16px;

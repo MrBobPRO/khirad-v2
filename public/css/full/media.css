@@ -85,6 +85,7 @@
     .footer__main-title {
         text-align: center;
         font-size: 15px;
+        font-weight: bold;
     }
     .footer__about-socials {
         justify-content: center;
@@ -125,7 +126,6 @@
         font-family: 'Roboto Condensed', sans-serif;
         font-style: italic;
         text-align: center;
-        font-size: 15px;
     }
     /* Most Readable Books Carousel */
     .horizontal-card {
