@@ -4,9 +4,7 @@
             <img class="logo__image" src="{{ asset('img/main/logo.png') }}" alt="Хирад лого">
         </a>
 
-        <button class="mobile-menu-toggler" data-action="toggle-mobile-menu">
-            <span class="material-icons-outlined">menu</span>
-        </button>
+        <img class="mobile-menu-toggler" src="{{ asset('img/main/menu.svg') }}" data-action="toggle-mobile-menu" alt="menu">
 
         {{-- Header Nav --}}
         <nav class="header-nav">

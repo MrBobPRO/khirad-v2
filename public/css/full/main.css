@@ -301,12 +301,7 @@ button {
 }
 .mobile-menu-toggler {
     display: none;
-    color: #fff;
-    background: var(--main-color);
-    border: none;
-    display: flex;
-    padding: 10px;
-    border-radius: 30%;
+    height: 24px;
 }
 .header-nav__ul {
     margin: 0;
