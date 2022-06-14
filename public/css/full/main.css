@@ -982,6 +982,9 @@ button {
     min-width: 300px;
     width: 300px;
 }
+.books-info__main {
+    flex-grow: 1;
+}
 .books-info__figure {
     border-radius: 6px;
     box-shadow: 0px 0px 8px 0px rgb(34 60 80 / 20%);
