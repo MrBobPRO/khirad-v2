@@ -844,14 +844,14 @@ button {
     font-family: 'Material Icons Outlined';
     content: '\e2ea';
     left: 14px;
-    top: 14px;
+    top: 13px;
 }
 .owl-nav .owl-next::after {
     position: absolute;
     font-family: 'Material Icons Outlined';
     content: '\e5e1';
     right: 14px;
-    top: 14px;
+    top: 13px;
 }
 /* ------------ /end Most Readable ------------ */
 
