@@ -79,5 +79,9 @@
         @endif
 
         <script src="{{ asset('js/app.js') }}"></script>
+
+        @production
+            @include('layouts.analytics')
+        @endproduction
     </body>
 </html>
